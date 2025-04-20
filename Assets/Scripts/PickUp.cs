@@ -11,10 +11,10 @@ public class PickUp : MonoBehaviour
 
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
             for (var i = 0; i < inventory.Slots.Length; i++)
             {
