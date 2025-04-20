@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject item;
+    private Transform Player;
+
+    private void Start()
     {
-        
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnDroppedItem()
     {
-        
+        var playerPos = new Vector2(Player.position.x + 2, Player.position.y);
+        Instantiate(item, playerPos, Quaternion.identity);
     }
 }
