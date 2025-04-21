@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
         transform.position += vector;
-        rigidbody2D.linearVelocity = vector * speed;
+        rigidbody2D.velocity = vector * speed;
         camera.transform.position =
             new Vector3(transform.position.x, transform.position.y, camera.transform.position.z);
         if (transform.position.y < -5)
