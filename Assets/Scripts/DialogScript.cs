@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
-    [Header("Настройки")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     public Transform player;
     public float interactDistance = 2f;
     public GameObject dialoguePanel;
     public Text dialogueText;
     public string[] dialogueLines;
 
-    [Header("Подсказка")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     public GameObject pressHint; 
 
     private int currentLine = 0;
@@ -34,7 +34,7 @@ public class DialogueSystem : MonoBehaviour
     {
         if (player == null || dialoguePanel == null || dialogueText == null)
         {
-            Debug.LogError("Не назначены обязательные компоненты!");
+            Debug.LogError("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
@@ -43,6 +43,8 @@ public class DialogueSystem : MonoBehaviour
         if (pressHint != null)
         {
             pressHint.SetActive(isPlayerClose && !isDialogueActive);
+            var textPosition = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 0.5f + Vector3.right);
+            pressHint.transform.position = textPosition;
         }
 
         if (isPlayerClose && Input.GetKeyDown(KeyCode.E))
@@ -56,13 +58,18 @@ public class DialogueSystem : MonoBehaviour
                 NextLine();
             }
         }
+
+        if (!isPlayerClose && isDialogueActive)
+        {
+            EndDialogue();
+        }
     }
 
     void StartDialogue()
     {
         if (dialogueLines.Length == 0)
         {
-            Debug.LogError("Массив dialogueLines пустой!");
+            Debug.LogError("пїЅпїЅпїЅпїЅпїЅпїЅ dialogueLines пїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
