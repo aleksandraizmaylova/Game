@@ -7,7 +7,7 @@ public class Fragment : MonoBehaviour
 
     private void Start()
     {
-        Mirror = GameObject.FindGameObjectWithTag("Player").GetComponent<Mirror>();
+        Mirror = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().mirror;
     }
     
     private void OnTriggerStay2D(Collider2D other)

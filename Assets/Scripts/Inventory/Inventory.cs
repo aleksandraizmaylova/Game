@@ -2,18 +2,21 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public bool[] isSlotFull;
-    public int selectedSlot;
-    public GameObject[] Slots;
     public GameObject openedBP;
     public GameObject closedBP;
+    public Mirror mirror;
+    public bool[] isSlotFull;
+    public int selectedSlot;
+    private Slot[] Slots;
     private bool InventoryOpen;
 
     private void Start()
     {
         selectedSlot = 0;
         InventoryOpen = false;
+        closedBP.SetActive(true);
         openedBP.SetActive(false);
+        Slots = openedBP.GetComponent<BackPack>().Slots;
     }
 
     private void Update()
@@ -31,32 +34,31 @@ public class Inventory : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                Slots[selectedSlot].GetComponent<Slot>().Unselect();
-                selectedSlot = 0;
-                Slots[selectedSlot].GetComponent<Slot>().Select();
+                ChangeSlot(0);
             }
-
+            
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Slots[selectedSlot].GetComponent<Slot>().Unselect();
-                selectedSlot = 1;
-                Slots[selectedSlot].GetComponent<Slot>().Select();
+                ChangeSlot(1);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                Slots[selectedSlot].GetComponent<Slot>().Unselect();
-                selectedSlot = 2;
-                Slots[selectedSlot].GetComponent<Slot>().Select();
+                ChangeSlot(2);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                Slots[selectedSlot].GetComponent<Slot>().Unselect();
-                selectedSlot = 3;
-                Slots[selectedSlot].GetComponent<Slot>().Select();
+                ChangeSlot(3);
             }
         }
         
+    }
+
+    private void ChangeSlot(int newSlot)
+    {
+        Slots[selectedSlot].Unselect();
+        selectedSlot = newSlot;
+        Slots[selectedSlot].Select();
     }
 }
