@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         var movementVector = GameInput.Instance.GetMovementVector();
-        rb2.linearVelocity = movementVector * currentSpeed;
+        rb2.velocity = movementVector * currentSpeed;
 
         if (Mathf.Abs(movementVector.x) > minMovingSpeed || Mathf.Abs(movementVector.y) > minMovingSpeed)
         {

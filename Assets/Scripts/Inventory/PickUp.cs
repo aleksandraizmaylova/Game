@@ -5,6 +5,7 @@ public class PickUp : MonoBehaviour
     private Inventory Inventory;
     private BackPack backPack;
     public GameObject slotButton;
+    public bool isPicked = false;
 
     private void Start()
     {
@@ -17,7 +18,6 @@ public class PickUp : MonoBehaviour
         if (other.CompareTag("Player") && Input.GetKey(KeyCode.Q))
             PickObject();
     }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,6 +34,7 @@ public class PickUp : MonoBehaviour
             Inventory.isSlotFull[i] = true;
             Instantiate(slotButton, backPack.Slots[i].transform);
             Destroy(gameObject);
+            isPicked = true;
             break;
         }
     }
