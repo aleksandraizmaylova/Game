@@ -420,9 +420,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mom_0: -664501723113990750
+      Mom_1: 841746011652459912
+      Mom_10: -8654937030913064799
+      Mom_11: 3282512447191804981
+      Mom_2: 4750560954934991674
+      Mom_3: 3305222884957025545
+      Mom_4: -3720508357914201021
+      Mom_5: 4764771972365447709
+      Mom_6: 333439124222869082
+      Mom_7: 6339967673950080132
+      Mom_8: 963162982656223184
+      Mom_9: 7329758246971385055
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

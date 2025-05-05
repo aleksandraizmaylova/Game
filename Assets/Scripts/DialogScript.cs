@@ -1,23 +1,31 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
-    [Header("���������")]
     public Transform player;
+    public GameObject keyObj;
     public float interactDistance = 2f;
     public GameObject dialoguePanel;
     public Text dialogueText;
     public string[] dialogueLines;
+    private int[] stopLine;
+    private bool[] actions;
+    public int action = 0;
+    private PickUp pkup;
 
-    [Header("���������")]
     public GameObject pressHint; 
 
-    private int currentLine = 0;
+    public int currentLine = 0;
     private bool isDialogueActive = false;
 
     void Start()
     {
+        pkup = keyObj.GetComponent<PickUp>();
+        stopLine = new int[] { 2 };
+        actions = new[] { false };
         
         if (dialoguePanel != null)
         {
@@ -32,12 +40,10 @@ public class DialogueSystem : MonoBehaviour
 
     void Update()
     {
-        if (player == null || dialoguePanel == null || dialogueText == null)
+        if(pkup.isPicked)
         {
-            Debug.LogError("�� ��������� ������������ ����������!");
-            return;
+            actions[0] = true;
         }
-
         bool isPlayerClose = IsPlayerClose();
 
         if (pressHint != null)
@@ -67,24 +73,39 @@ public class DialogueSystem : MonoBehaviour
 
     void StartDialogue()
     {
-        if (dialogueLines.Length == 0)
-        {
-            Debug.LogError("������ dialogueLines ������!");
-            return;
-        }
-
         dialoguePanel.SetActive(true);
-        dialogueText.text = dialogueLines[0];
-        currentLine = 0;
+        dialogueText.text = dialogueLines[currentLine];
         isDialogueActive = true;
     }
 
     void NextLine()
     {
-        currentLine++;
-
-        if (currentLine < dialogueLines.Length)
+        if(currentLine < dialogueLines.Length)
         {
+            if(stopLine.Contains(currentLine) && actions[action] == true)
+            {
+                if (currentLine < dialogueLines.Length)
+                {
+                    currentLine++;
+                    dialogueText.text = dialogueLines[currentLine];
+                }
+                if(action < stopLine.Length - 1 && action < actions.Length - 1)
+                {
+                    action++;
+                }
+            }
+            else
+            {
+                if(currentLine < stopLine[action])
+                {
+                    currentLine++;
+                    dialogueText.text = dialogueLines[currentLine];
+                }
+                else
+                {
+                    EndDialogue();
+                }
+            }
             dialogueText.text = dialogueLines[currentLine];
         }
         else
@@ -97,7 +118,10 @@ public class DialogueSystem : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         isDialogueActive = false;
-        currentLine = 0;
+        if(!actions[action])
+        {
+            currentLine = stopLine[action];
+        }
     }
 
     bool IsPlayerClose()
