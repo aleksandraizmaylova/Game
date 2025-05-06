@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
-    [SerializeField] private Transform destination; // Точка, куда телепортировать
-    [SerializeField] private KeyCode activationKey = KeyCode.E; // Клавиша активации
-    [SerializeField] private float teleportCooldown = 0f; // Задержка между телепортациями (0 - без задержки)
+    [SerializeField] private Transform destination; // пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    [SerializeField] private KeyCode activationKey = KeyCode.E; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    [SerializeField] private float teleportCooldown = 0f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (0 - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 
     private bool playerInRange = false;
     private bool canTeleport = true;
@@ -12,12 +12,12 @@ public class Teleporter : MonoBehaviour
 
     private void Update()
     {
-        // Проверяем можно ли телепортироваться
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (playerInRange && Input.GetKeyDown(activationKey) && canTeleport)
         {
             TeleportPlayer();
 
-            // Если установлена задержка - активируем кулдаун
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             if (teleportCooldown > 0)
             {
                 canTeleport = false;
@@ -32,7 +32,7 @@ public class Teleporter : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            Debug.Log("Press E to teleport");
+            Debug.Log("Press E to teleport"); // reivew: РµСЃР»Рё С‡С‚Рѕ, РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЌС‚РѕРіРѕ РЅРµ СѓРІРёРґРёС‚
         }
     }
 
@@ -46,6 +46,7 @@ public class Teleporter : MonoBehaviour
 
     private void TeleportPlayer()
     {
+        // review: var
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null && destination != null)
         {

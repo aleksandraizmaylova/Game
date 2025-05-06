@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // review: грязный прием. Можем ли сделать не синглтоном?
     public static Player Instance { get; private set; }
 
     private Rigidbody2D rb2;
@@ -10,6 +11,8 @@ public class Player : MonoBehaviour
 
     private float minMovingSpeed = 0.1f;
 
+    // review: кажется, что нужно называть исходя из направления, а не прибинженной кнопки
+    // review: можем ли хранить только одно поле - Direction?
     private bool isRunningW = false;
     private bool isRunningA = false;
     private bool isRunningS = false;
@@ -43,6 +46,7 @@ public class Player : MonoBehaviour
         var movementVector = GameInput.Instance.GetMovementVector();
         rb2.linearVelocity = movementVector * currentSpeed;
 
+        // review: стоит выделить метод IsPlayerMoving
         if (Mathf.Abs(movementVector.x) > minMovingSpeed || Mathf.Abs(movementVector.y) > minMovingSpeed)
         {
             // ������� ��������� ������������ �������� (����� ���������)

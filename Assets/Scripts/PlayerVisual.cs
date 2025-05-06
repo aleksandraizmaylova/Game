@@ -4,6 +4,7 @@ public class PlayerVisual : MonoBehaviour
 {
     private Animator animator;
 
+    // review: рекомендую поменять нейминг на right, left, down, up или подобное
     private const string IS_RUNNING_W = "IsRunningW";
     private const string IS_RUNNING_A = "IsRunningA";
     private const string IS_RUNNING_S = "IsRunningS";

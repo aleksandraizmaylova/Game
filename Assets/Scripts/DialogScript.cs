@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+// review: слишком абстрактное название. Можно назвать по имени квеста
 public class DialogueSystem : MonoBehaviour
 {
     public Transform player;
@@ -24,6 +25,7 @@ public class DialogueSystem : MonoBehaviour
     void Start()
     {
         pkup = keyObj.GetComponent<PickUp>();
+        // review: непонятно, почему 2
         stopLine = new int[] { 2 };
         actions = new[] { false };
         
@@ -44,8 +46,10 @@ public class DialogueSystem : MonoBehaviour
         {
             actions[0] = true;
         }
+        // review; var
         bool isPlayerClose = IsPlayerClose();
 
+        // review: можно в метод
         if (pressHint != null)
         {
             pressHint.SetActive(isPlayerClose && !isDialogueActive);
@@ -53,6 +57,7 @@ public class DialogueSystem : MonoBehaviour
             pressHint.transform.position = textPosition;
         }
 
+        // review: можно в метод
         if (isPlayerClose && Input.GetKeyDown(KeyCode.E))
         {
             if (!isDialogueActive)
@@ -82,6 +87,7 @@ public class DialogueSystem : MonoBehaviour
     {
         if(currentLine < dialogueLines.Length)
         {
+            // review: actions[action] == true <=> actions[action]
             if(stopLine.Contains(currentLine) && actions[action] == true)
             {
                 if (currentLine < dialogueLines.Length)

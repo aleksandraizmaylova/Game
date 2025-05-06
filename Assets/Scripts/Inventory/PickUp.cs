@@ -21,6 +21,7 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // review: логика дублируется, стоит выделить метод
         if (other.CompareTag("Player") && Input.GetKey(KeyCode.Q))
             PickObject();
     }
