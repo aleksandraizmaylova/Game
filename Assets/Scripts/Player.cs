@@ -41,22 +41,22 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         var movementVector = GameInput.Instance.GetMovementVector();
-        rb2.velocity = movementVector * currentSpeed;
+        rb2.linearVelocity = movementVector * currentSpeed;
 
         if (Mathf.Abs(movementVector.x) > minMovingSpeed || Mathf.Abs(movementVector.y) > minMovingSpeed)
         {
-            // Сначала проверяем вертикальное движение (имеет приоритет)
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
             if (Mathf.Abs(movementVector.y) > minMovingSpeed)
             {
                 isRunningW = movementVector.y > 0;
                 isRunningS = movementVector.y < 0;
-                // Если движемся вверх/вниз, игнорируем горизонтальные направления
+                // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 isRunningA = false;
                 isRunningD = false;
             }
             else
             {
-                // Если нет вертикального движения, проверяем горизонтальное
+                // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 isRunningD = movementVector.x > 0;
                 isRunningA = movementVector.x < 0;
             }
