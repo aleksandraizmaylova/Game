@@ -16,6 +16,7 @@ public class Track : MonoBehaviour
         finish = Finish.GetComponent<Collider2D>();
         rb2 = GetComponent<Rigidbody2D>();
         start = rb2.position;
+        CurrentSpeed += 5;
     }
 
     private void FixedUpdate()
