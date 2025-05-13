@@ -27,18 +27,11 @@ public class Player : MonoBehaviour
         currentSpeed = Constants.NormalSpeed;
     }
 
-    private void Update() => ChangeSpeed();
-
     private void FixedUpdate() => HandleMovement();
 
-    private void ChangeSpeed()
+    public void ChangeSpeed(float speed)
     {
-        if (GameInput.Instance.IsSneaking())
-            currentSpeed = Constants.SneakySpeed;
-        else if (GameInput.Instance.IsSprinting())
-            currentSpeed = Constants.SprintSpeed;
-        else
-            currentSpeed = Constants.NormalSpeed;
+        currentSpeed = speed;
     }
 
     private void HandleMovement()

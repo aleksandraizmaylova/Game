@@ -13,7 +13,7 @@ public class Teleporter : MonoBehaviour
     private void Update()
     {
         // ��������� ����� �� �����������������
-        if (playerInRange && Input.GetKeyDown(activationKey) && canTeleport)
+        if (playerInRange && (Input.GetKeyDown(activationKey) || activationKey is KeyCode.None) && canTeleport)
         {
             TeleportPlayer();
 
