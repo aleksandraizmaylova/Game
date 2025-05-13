@@ -32,7 +32,7 @@ public class Teleporter : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            Debug.Log("Press E to teleport");
+            Debug.Log("Press E to teleport"); // reivew: если что, пользователь этого не увидит
         }
     }
 
@@ -46,6 +46,7 @@ public class Teleporter : MonoBehaviour
 
     private void TeleportPlayer()
     {
+        // review: var
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null && destination != null)
         {

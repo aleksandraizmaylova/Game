@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
     public Mirror mirror;
     public bool[] isSlotFull;
     public int selectedSlot;
-    private Slot[] Slots;
+    private Slot[] Slots; // review: почему приватные поля с большой буквы?
     private bool InventoryOpen;
 
     private void Start()
@@ -21,6 +21,8 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
+        // review: лучше выделять методы, чем оставлять комментарии
+
         // открытие/закрытие инвентаря
         if (Input.GetKeyDown(KeyCode.I))
         {
