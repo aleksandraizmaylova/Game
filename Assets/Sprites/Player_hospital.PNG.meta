@@ -422,7 +422,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Player_hospital_0: 437923512168695477
+      Player_hospital_1: 3826612232761614531
+      Player_hospital_10: 4188798674109834954
+      Player_hospital_11: -712372062620320612
+      Player_hospital_2: 5553459932980677645
+      Player_hospital_3: 8936912873966484179
+      Player_hospital_4: -3795378105433958463
+      Player_hospital_5: -5135501924123672374
+      Player_hospital_6: -7645081399827253686
+      Player_hospital_7: 3494402483010186844
+      Player_hospital_8: 2449080121166782349
+      Player_hospital_9: 5168702564041224337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
