@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
 
 
     public Transform player;
+    public GameObject fragment;
     public Player playerMove;
     public GameObject keyObj;
     public float interactDistance = 2f;
@@ -20,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject pressHint;
     private bool isDialogueActive = false;
     private int value = 0;
+    private bool IsEnd = false;
 
     // ѕример данных диалога (можно заменить на класс или JSON)
     private List<string> npcLines = new List<string> {
@@ -27,14 +29,13 @@ public class DialogueManager : MonoBehaviour
         "...",
         "€ дам только один шанс выбратьс€ отсюда. —лушай внимательно.",
         "что по€вилось первым, курица или €йцо?",
-        ""
     };
 
     private List<string[]> playerChoices = new List<string[]> {
         new string[] { "ты кто?", "мы знакомы?" },
         new string[] { "..." },
         new string[] { "..." },
-        new string[] { "курица", "€йцо", "что?"}
+        new string[] { "курица", "€йцо", "что?"},
     };
 
     private List<int[]> choisesValue = new List<int[]>
@@ -43,6 +44,7 @@ public class DialogueManager : MonoBehaviour
         new int[] { 0 },
         new int[] { 0 },
         new int[] { -1, 1, -1}
+
     };
 
     private int currentLine = 0;
@@ -100,7 +102,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = npcLines[currentLine];
 
         // јктивируем нужное количество кнопок
-        for (int i = 0; i < choiceButtons.Length; i++)
+        for (var i = 0; i < choiceButtons.Length; i++)
         {
             if (i < playerChoices[currentLine].Length)
             {
@@ -108,9 +110,12 @@ public class DialogueManager : MonoBehaviour
                 choiceButtons[i].GetComponentInChildren<Text>().text = playerChoices[currentLine][i];
 
                 // ¬ажно: сохран€ем индекс выбора через замыкание
-                int choiceIndex = i;
+                var choiceIndex = i;
                 choiceButtons[i].onClick.RemoveAllListeners();
-                choiceButtons[i].onClick.AddListener(() => OnChoiceSelected(choiceIndex));
+                choiceButtons[i].onClick.AddListener(() => 
+                { 
+                    OnChoiceSelected(choiceIndex);
+                });
             }
             else
             {
@@ -121,8 +126,9 @@ public class DialogueManager : MonoBehaviour
 
     void OnChoiceSelected(int choiceIndex)
     {
-        Debug.Log("»грок выбрал: " + playerChoices[currentLine][choiceIndex]);
         value += choisesValue[currentLine][choiceIndex];
+        Debug.Log("»грок выбрал: " + playerChoices[currentLine][choiceIndex]);
+        //value += choisesValue[currentLine][choiceIndex];
 
         // ѕереход к следующей реплике (или закрытие диалога)
         currentLine++;
@@ -132,18 +138,32 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            if (value < 1)
-            {
-                npcLines.Add("ты недостоин, прощай.....");
-                playerChoices.Add(new string[] {"..."});
-                StartDialogue();
-            }
             foreach (var button in choiceButtons)
             {
                 button.gameObject.SetActive(false);
             }
-            dialoguePanel.SetActive(false);
+            if (value > 0)
+            {
+                dialogueText.text = "регнуло";
+                choiceButtons[0].gameObject.SetActive(true);
+                choiceButtons[0].GetComponentInChildren<Text>().text = "(((";
+                choiceButtons[0].onClick.RemoveAllListeners();
+                choiceButtons[0].onClick.AddListener(() => { choiceButtons[0].gameObject.SetActive(false); dialoguePanel.SetActive(false); });
+                fragment.SetActive(true);
+            }
+            else
+            {
+
+                dialogueText.text = "не регнуло";
+                choiceButtons[0].gameObject.SetActive(true);
+                choiceButtons[0].GetComponentInChildren<Text>().text = "(((";
+                choiceButtons[0].onClick.RemoveAllListeners();
+                choiceButtons[0].onClick.AddListener(() => { choiceButtons[0].gameObject.SetActive(false); dialoguePanel.SetActive(false); });
+            }
+
             playerMove.canMove = true;
+            IsEnd = true;
+
         }
     }
 }
