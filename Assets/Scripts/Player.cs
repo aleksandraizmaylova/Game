@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
     // review: грязный прием. Можем ли сделать не синглтоном?
     public static Player Instance { get; private set; }
 
+    public bool canMove = true;
+
     private Rigidbody2D rb2;
 
     private float currentSpeed;
@@ -34,36 +36,45 @@ public class Player : MonoBehaviour
         currentSpeed = speed;
     }
 
+    private void Update()
+    {
+        //canMove = true;
+    }
+
     private void HandleMovement()
     {
-        var movementVector = GameInput.Instance.GetMovementVector();
-        rb2.linearVelocity = movementVector * currentSpeed;
-
-        // review: стоит выделить метод IsPlayerMoving
-        if (Mathf.Abs(movementVector.x) > minMovingSpeed || Mathf.Abs(movementVector.y) > minMovingSpeed)
+        if (canMove)
         {
-            // ������� ��������� ������������ �������� (����� ���������)
-            if (Mathf.Abs(movementVector.y) > minMovingSpeed)
+
+            var movementVector = GameInput.Instance.GetMovementVector();
+            rb2.velocity = movementVector * currentSpeed;
+
+            // review: стоит выделить метод IsPlayerMoving
+            if (Mathf.Abs(movementVector.x) > minMovingSpeed || Mathf.Abs(movementVector.y) > minMovingSpeed)
             {
-                isRunningW = movementVector.y > 0;
-                isRunningS = movementVector.y < 0;
-                // ���� �������� �����/����, ���������� �������������� �����������
-                isRunningA = false;
-                isRunningD = false;
+                // ������� ��������� ������������ �������� (����� ���������)
+                if (Mathf.Abs(movementVector.y) > minMovingSpeed)
+                {
+                    isRunningW = movementVector.y > 0;
+                    isRunningS = movementVector.y < 0;
+                    // ���� �������� �����/����, ���������� �������������� �����������
+                    isRunningA = false;
+                    isRunningD = false;
+                }
+                else
+                {
+                    // ���� ��� ������������� ��������, ��������� ��������������
+                    isRunningD = movementVector.x > 0;
+                    isRunningA = movementVector.x < 0;
+                }
             }
             else
             {
-                // ���� ��� ������������� ��������, ��������� ��������������
-                isRunningD = movementVector.x > 0;
-                isRunningA = movementVector.x < 0;
+                isRunningW = false;
+                isRunningA = false;
+                isRunningS = false;
+                isRunningD = false;
             }
-        }
-        else
-        {
-            isRunningW = false;
-            isRunningA = false;
-            isRunningS = false;
-            isRunningD = false;
         }
     }
 

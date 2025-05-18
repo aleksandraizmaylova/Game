@@ -22,7 +22,7 @@ public class Track : MonoBehaviour
     private void FixedUpdate()
     {
         var movementVector = Direction == Direction.Left ? Vector2.left : Vector2.right;
-        rb2.linearVelocity = movementVector * CurrentSpeed;
+        rb2.velocity = movementVector * CurrentSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

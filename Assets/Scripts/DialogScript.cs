@@ -46,8 +46,7 @@ public class DialogueSystem : MonoBehaviour
         {
             actions[0] = true;
         }
-        // review; var
-        bool isPlayerClose = IsPlayerClose();
+        var isPlayerClose = IsPlayerClose();
 
         // review: можно в метод
         if (pressHint != null)
@@ -87,8 +86,7 @@ public class DialogueSystem : MonoBehaviour
     {
         if(currentLine < dialogueLines.Length)
         {
-            // review: actions[action] == true <=> actions[action]
-            if(stopLine.Contains(currentLine) && actions[action] == true)
+            if(stopLine.Contains(currentLine) && actions[action])
             {
                 if (currentLine < dialogueLines.Length)
                 {
