@@ -4,11 +4,8 @@ using System.Collections.Generic;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Text npcText;  // Текст реплики NPC
-    public Button[] choiceButtons;  // Массив кнопок выбора
-
-
-
+    public Text npcText;
+    public Button[] choiceButtons;
     public Transform player;
     public GameObject fragment;
     public Player playerMove;
@@ -23,19 +20,26 @@ public class DialogueManager : MonoBehaviour
     private int value = 0;
     private bool IsEnd = false;
 
-    // Пример данных диалога (можно заменить на класс или JSON)
     private List<string> npcLines = new List<string> {
         "Ну Здравствуй",
         "...",
         "я дам только один шанс выбраться отсюда. Слушай внимательно.",
         "что появилось первым, курица или яйцо?",
+        "Если заменить все части корабля, тот же ли это корабль?",
+        "Что такое «я» — тело, разум или душа?",
+        "Возможен ли вечный двигатель?"
     };
 
     private List<string[]> playerChoices = new List<string[]> {
         new string[] { "ты кто?", "мы знакомы?" },
         new string[] { "..." },
         new string[] { "..." },
-        new string[] { "курица", "яйцо", "что?"},
+        new string[] { "Курица", "Яйцо", "Что?"},
+        new string[] { "Нет", "Да", "Чего???"},
+        new string[] { "Тело + разум", "Только душа", "Ты это мне?" },
+        new string[] { "A?", "Нет", "Ха! конечно!"}
+
+
     };
 
     private List<int[]> choisesValue = new List<int[]>
@@ -43,7 +47,11 @@ public class DialogueManager : MonoBehaviour
         new int[] { 0, 0 },
         new int[] { 0 },
         new int[] { 0 },
-        new int[] { -1, 1, -1}
+        new int[] { -1, 1, -1 },
+        new int[] { 1, -1, -1 },
+        new int[] { 1, -1, -1 },
+        new int[] { -1, 1, -1 }
+
 
     };
 
@@ -52,21 +60,15 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         if (dialoguePanel != null)
-        {
             dialoguePanel.SetActive(false);
-        }
 
         if (pressHint != null)
-        {
             pressHint.SetActive(false);
-        }
 
         if(!isDialogueActive) 
         { 
            foreach(var button in choiceButtons)
-           {
                button.gameObject.SetActive(false);
-           } 
         }
     }
 
@@ -88,9 +90,7 @@ public class DialogueManager : MonoBehaviour
         if (isPlayerClose && Input.GetKeyDown(KeyCode.E))
         {
             if (!isDialogueActive)
-            {
                 StartDialogue();
-            }
         }
     }
 
@@ -100,16 +100,12 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = true;
         playerMove.canMove = false;
         dialogueText.text = npcLines[currentLine];
-
-        // Активируем нужное количество кнопок
         for (var i = 0; i < choiceButtons.Length; i++)
         {
             if (i < playerChoices[currentLine].Length)
             {
                 choiceButtons[i].gameObject.SetActive(true);
                 choiceButtons[i].GetComponentInChildren<Text>().text = playerChoices[currentLine][i];
-
-                // Важно: сохраняем индекс выбора через замыкание
                 var choiceIndex = i;
                 choiceButtons[i].onClick.RemoveAllListeners();
                 choiceButtons[i].onClick.AddListener(() => 
@@ -128,25 +124,18 @@ public class DialogueManager : MonoBehaviour
     {
         value += choisesValue[currentLine][choiceIndex];
         Debug.Log("Игрок выбрал: " + playerChoices[currentLine][choiceIndex]);
-        //value += choisesValue[currentLine][choiceIndex];
-
-        // Переход к следующей реплике (или закрытие диалога)
         currentLine++;
         if (currentLine < npcLines.Count)
-        {
             StartDialogue();
-        }
         else
         {
             foreach (var button in choiceButtons)
-            {
                 button.gameObject.SetActive(false);
-            }
-            if (value > 0)
+            if (value == 4)
             {
-                dialogueText.text = "регнуло";
+                dialogueText.text = "Я удивлен твоими познаниями! хорошо, этот осколок твой.";
                 choiceButtons[0].gameObject.SetActive(true);
-                choiceButtons[0].GetComponentInChildren<Text>().text = "(((";
+                choiceButtons[0].GetComponentInChildren<Text>().text = "Откуда я все это знаю??";
                 choiceButtons[0].onClick.RemoveAllListeners();
                 choiceButtons[0].onClick.AddListener(() => { choiceButtons[0].gameObject.SetActive(false); dialoguePanel.SetActive(false); });
                 fragment.SetActive(true);
@@ -154,16 +143,15 @@ public class DialogueManager : MonoBehaviour
             else
             {
 
-                dialogueText.text = "не регнуло";
+                dialogueText.text = "Я в тебе разочарован, убирайся ни с чем.";
                 choiceButtons[0].gameObject.SetActive(true);
-                choiceButtons[0].GetComponentInChildren<Text>().text = "(((";
+                choiceButtons[0].GetComponentInChildren<Text>().text = "...";
                 choiceButtons[0].onClick.RemoveAllListeners();
                 choiceButtons[0].onClick.AddListener(() => { choiceButtons[0].gameObject.SetActive(false); dialoguePanel.SetActive(false); });
+                player.position = new Vector3(-28, -18, 0);
             }
-
             playerMove.canMove = true;
             IsEnd = true;
-
         }
     }
 }
