@@ -1,70 +1,69 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Text npcText;  // Текст реплики NPC
-    public Button[] choiceButtons;  // Массив кнопок выбора
-
-
-
+    public Button[] choiceButtons;
     public Transform player;
+    public GameObject fragment;
     public Player playerMove;
-    public GameObject keyObj;
-    public float interactDistance = 2f;
     public GameObject dialoguePanel;
     public Text dialogueText;
-    public string[] dialogueLines;
-    public int action = 0;
     public GameObject pressHint;
-    private bool isDialogueActive = false;
-    private int value = 0;
+    private Animator animator;
+    private const float interactDistance = 2f;
+    private bool isDialogueActive;
+    private int value;
+    private bool IsEnd;
+    private int currentLine;
 
-    // Пример данных диалога (можно заменить на класс или JSON)
-    private List<string> npcLines = new List<string> {
-        "Ну Здравствуй",
-        "...",
-        "я дам только один шанс выбраться отсюда. Слушай внимательно.",
-        "что появилось первым, курица или яйцо?",
-        ""
-    };
-
-    private List<string[]> playerChoices = new List<string[]> {
-        new string[] { "ты кто?", "мы знакомы?" },
-        new string[] { "..." },
-        new string[] { "..." },
-        new string[] { "курица", "яйцо", "что?"}
-    };
-
-    private List<int[]> choisesValue = new List<int[]>
+    private List<string> npcLines = new()
     {
-        new int[] { 0, 0 },
-        new int[] { 0 },
-        new int[] { 0 },
-        new int[] { -1, 1, -1}
+        "РќСѓ Р—РґСЂР°РІСЃС‚РІСѓР№",
+        "...",
+        "СЏ РґР°Рј С‚РѕР»СЊРєРѕ РѕРґРёРЅ С€Р°РЅСЃ РІС‹Р±СЂР°С‚СЊСЃСЏ РѕС‚СЃСЋРґР°. РЎР»СѓС€Р°Р№ РІРЅРёРјР°С‚РµР»СЊРЅРѕ.",
+        "С‡С‚Рѕ РїРѕСЏРІРёР»РѕСЃСЊ РїРµСЂРІС‹Рј, РєСѓСЂРёС†Р° РёР»Рё СЏР№С†Рѕ?",
+        "Р•СЃР»Рё Р·Р°РјРµРЅРёС‚СЊ РІСЃРµ С‡Р°СЃС‚Рё РєРѕСЂР°Р±Р»СЏ, С‚РѕС‚ Р¶Рµ Р»Рё СЌС‚Рѕ РєРѕСЂР°Р±Р»СЊ?",
+        "Р§С‚Рѕ С‚Р°РєРѕРµ В«СЏВ» вЂ” С‚РµР»Рѕ, СЂР°Р·СѓРј РёР»Рё РґСѓС€Р°?",
+        "Р’РѕР·РјРѕР¶РµРЅ Р»Рё РІРµС‡РЅС‹Р№ РґРІРёРіР°С‚РµР»СЊ?"
     };
 
-    private int currentLine = 0;
+    private List<string[]> playerChoices = new()
+    {
+        new[] { "С‚С‹ РєС‚Рѕ?", "РјС‹ Р·РЅР°РєРѕРјС‹?" },
+        new[] { "..." },
+        new[] { "..." },
+        new[] { "РљСѓСЂРёС†Р°", "РЇР№С†Рѕ", "Р§С‚Рѕ?"},
+        new[] { "РќРµС‚", "Р”Р°", "Р§РµРіРѕ???"},
+        new[] { "РўРµР»Рѕ + СЂР°Р·СѓРј", "РўРѕР»СЊРєРѕ РґСѓС€Р°", "РўС‹ СЌС‚Рѕ РјРЅРµ?" },
+        new[] { "A?", "РќРµС‚", "РҐР°! РєРѕРЅРµС‡РЅРѕ!"}
+    };
+
+    private List<int[]> choisesValue = new()
+    {
+        new[] { 0, 0 },
+        new[] { 0 },
+        new[] { 0 },
+        new[] { -1, 1, -1 },
+        new[] { 1, -1, -1 },
+        new[] { 1, -1, -1 },
+        new[] { -1, 1, -1 }
+    };
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         if (dialoguePanel != null)
-        {
             dialoguePanel.SetActive(false);
-        }
 
         if (pressHint != null)
-        {
             pressHint.SetActive(false);
-        }
 
         if(!isDialogueActive) 
         { 
            foreach(var button in choiceButtons)
-           {
                button.gameObject.SetActive(false);
-           } 
         }
     }
 
@@ -86,31 +85,29 @@ public class DialogueManager : MonoBehaviour
         if (isPlayerClose && Input.GetKeyDown(KeyCode.E))
         {
             if (!isDialogueActive)
-            {
                 StartDialogue();
-            }
         }
     }
 
     void StartDialogue()
     {
+        animator.SetTrigger("WolfSaid");
         dialoguePanel.SetActive(true);
         isDialogueActive = true;
         playerMove.canMove = false;
         dialogueText.text = npcLines[currentLine];
-
-        // Активируем нужное количество кнопок
-        for (int i = 0; i < choiceButtons.Length; i++)
+        for (var i = 0; i < choiceButtons.Length; i++)
         {
             if (i < playerChoices[currentLine].Length)
             {
                 choiceButtons[i].gameObject.SetActive(true);
                 choiceButtons[i].GetComponentInChildren<Text>().text = playerChoices[currentLine][i];
-
-                // Важно: сохраняем индекс выбора через замыкание
-                int choiceIndex = i;
+                var choiceIndex = i;
                 choiceButtons[i].onClick.RemoveAllListeners();
-                choiceButtons[i].onClick.AddListener(() => OnChoiceSelected(choiceIndex));
+                choiceButtons[i].onClick.AddListener(() => 
+                { 
+                    OnChoiceSelected(choiceIndex);
+                });
             }
             else
             {
@@ -121,29 +118,40 @@ public class DialogueManager : MonoBehaviour
 
     void OnChoiceSelected(int choiceIndex)
     {
-        Debug.Log("Игрок выбрал: " + playerChoices[currentLine][choiceIndex]);
         value += choisesValue[currentLine][choiceIndex];
-
-        // Переход к следующей реплике (или закрытие диалога)
+        Debug.Log("РРіСЂРѕРє РІС‹Р±СЂР°Р»: " + playerChoices[currentLine][choiceIndex]);
         currentLine++;
         if (currentLine < npcLines.Count)
         {
+            animator.ResetTrigger("WolfSaid");
             StartDialogue();
         }
         else
         {
-            if (value < 1)
-            {
-                npcLines.Add("ты недостоин, прощай.....");
-                playerChoices.Add(new string[] {"..."});
-                StartDialogue();
-            }
             foreach (var button in choiceButtons)
-            {
                 button.gameObject.SetActive(false);
+            if (value == 4)
+            {
+                animator.SetTrigger("WolfSaid");
+                dialogueText.text = "РЇ СѓРґРёРІР»РµРЅ С‚РІРѕРёРјРё РїРѕР·РЅР°РЅРёСЏРјРё! С…РѕСЂРѕС€Рѕ, СЌС‚РѕС‚ РѕСЃРєРѕР»РѕРє С‚РІРѕР№.";
+                choiceButtons[0].gameObject.SetActive(true);
+                choiceButtons[0].GetComponentInChildren<Text>().text = "РћС‚РєСѓРґР° СЏ РІСЃРµ СЌС‚Рѕ Р·РЅР°СЋ??";
+                choiceButtons[0].onClick.RemoveAllListeners();
+                choiceButtons[0].onClick.AddListener(() => { choiceButtons[0].gameObject.SetActive(false); dialoguePanel.SetActive(false); });
+                fragment.SetActive(true);
             }
-            dialoguePanel.SetActive(false);
+            else
+            {
+                animator.SetTrigger("WolfSaid");
+                dialogueText.text = "РЇ РІ С‚РµР±Рµ СЂР°Р·РѕС‡Р°СЂРѕРІР°РЅ, СѓР±РёСЂР°Р№СЃСЏ РЅРё СЃ С‡РµРј.";
+                choiceButtons[0].gameObject.SetActive(true);
+                choiceButtons[0].GetComponentInChildren<Text>().text = "...";
+                choiceButtons[0].onClick.RemoveAllListeners();
+                choiceButtons[0].onClick.AddListener(() => { choiceButtons[0].gameObject.SetActive(false); dialoguePanel.SetActive(false); });
+                player.position = new Vector3(-28, -18, 0);
+            }
             playerMove.canMove = true;
+            IsEnd = true;
         }
     }
 }

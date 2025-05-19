@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         {
 
             var movementVector = GameInput.Instance.GetMovementVector();
-            rb2.velocity = movementVector * currentSpeed;
+            rb2.linearVelocity = movementVector * currentSpeed;
 
             // review: стоит выделить метод IsPlayerMoving
             if (Mathf.Abs(movementVector.x) > minMovingSpeed || Mathf.Abs(movementVector.y) > minMovingSpeed)
