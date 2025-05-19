@@ -1,64 +1,59 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Text npcText;
     public Button[] choiceButtons;
     public Transform player;
     public GameObject fragment;
     public Player playerMove;
-    public GameObject keyObj;
-    public float interactDistance = 2f;
     public GameObject dialoguePanel;
     public Text dialogueText;
-    public string[] dialogueLines;
-    public int action = 0;
     public GameObject pressHint;
-    private bool isDialogueActive = false;
-    private int value = 0;
-    private bool IsEnd = false;
+    private Animator animator;
+    private const float interactDistance = 2f;
+    private bool isDialogueActive;
+    private int value;
+    private bool IsEnd;
+    private int currentLine;
 
-    private List<string> npcLines = new List<string> {
-        "Ну Здравствуй",
-        "...",
-        "я дам только один шанс выбраться отсюда. Слушай внимательно.",
-        "что появилось первым, курица или яйцо?",
-        "Если заменить все части корабля, тот же ли это корабль?",
-        "Что такое «я» — тело, разум или душа?",
-        "Возможен ли вечный двигатель?"
-    };
-
-    private List<string[]> playerChoices = new List<string[]> {
-        new string[] { "ты кто?", "мы знакомы?" },
-        new string[] { "..." },
-        new string[] { "..." },
-        new string[] { "Курица", "Яйцо", "Что?"},
-        new string[] { "Нет", "Да", "Чего???"},
-        new string[] { "Тело + разум", "Только душа", "Ты это мне?" },
-        new string[] { "A?", "Нет", "Ха! конечно!"}
-
-
-    };
-
-    private List<int[]> choisesValue = new List<int[]>
+    private List<string> npcLines = new()
     {
-        new int[] { 0, 0 },
-        new int[] { 0 },
-        new int[] { 0 },
-        new int[] { -1, 1, -1 },
-        new int[] { 1, -1, -1 },
-        new int[] { 1, -1, -1 },
-        new int[] { -1, 1, -1 }
-
-
+        "РќСѓ Р—РґСЂР°РІСЃС‚РІСѓР№",
+        "...",
+        "СЏ РґР°Рј С‚РѕР»СЊРєРѕ РѕРґРёРЅ С€Р°РЅСЃ РІС‹Р±СЂР°С‚СЊСЃСЏ РѕС‚СЃСЋРґР°. РЎР»СѓС€Р°Р№ РІРЅРёРјР°С‚РµР»СЊРЅРѕ.",
+        "С‡С‚Рѕ РїРѕСЏРІРёР»РѕСЃСЊ РїРµСЂРІС‹Рј, РєСѓСЂРёС†Р° РёР»Рё СЏР№С†Рѕ?",
+        "Р•СЃР»Рё Р·Р°РјРµРЅРёС‚СЊ РІСЃРµ С‡Р°СЃС‚Рё РєРѕСЂР°Р±Р»СЏ, С‚РѕС‚ Р¶Рµ Р»Рё СЌС‚Рѕ РєРѕСЂР°Р±Р»СЊ?",
+        "Р§С‚Рѕ С‚Р°РєРѕРµ В«СЏВ» вЂ” С‚РµР»Рѕ, СЂР°Р·СѓРј РёР»Рё РґСѓС€Р°?",
+        "Р’РѕР·РјРѕР¶РµРЅ Р»Рё РІРµС‡РЅС‹Р№ РґРІРёРіР°С‚РµР»СЊ?"
     };
 
-    private int currentLine = 0;
+    private List<string[]> playerChoices = new()
+    {
+        new[] { "С‚С‹ РєС‚Рѕ?", "РјС‹ Р·РЅР°РєРѕРјС‹?" },
+        new[] { "..." },
+        new[] { "..." },
+        new[] { "РљСѓСЂРёС†Р°", "РЇР№С†Рѕ", "Р§С‚Рѕ?"},
+        new[] { "РќРµС‚", "Р”Р°", "Р§РµРіРѕ???"},
+        new[] { "РўРµР»Рѕ + СЂР°Р·СѓРј", "РўРѕР»СЊРєРѕ РґСѓС€Р°", "РўС‹ СЌС‚Рѕ РјРЅРµ?" },
+        new[] { "A?", "РќРµС‚", "РҐР°! РєРѕРЅРµС‡РЅРѕ!"}
+    };
+
+    private List<int[]> choisesValue = new()
+    {
+        new[] { 0, 0 },
+        new[] { 0 },
+        new[] { 0 },
+        new[] { -1, 1, -1 },
+        new[] { 1, -1, -1 },
+        new[] { 1, -1, -1 },
+        new[] { -1, 1, -1 }
+    };
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
 
@@ -96,6 +91,7 @@ public class DialogueManager : MonoBehaviour
 
     void StartDialogue()
     {
+        animator.SetTrigger("WolfSaid");
         dialoguePanel.SetActive(true);
         isDialogueActive = true;
         playerMove.canMove = false;
@@ -123,27 +119,31 @@ public class DialogueManager : MonoBehaviour
     void OnChoiceSelected(int choiceIndex)
     {
         value += choisesValue[currentLine][choiceIndex];
-        Debug.Log("Игрок выбрал: " + playerChoices[currentLine][choiceIndex]);
+        Debug.Log("РРіСЂРѕРє РІС‹Р±СЂР°Р»: " + playerChoices[currentLine][choiceIndex]);
         currentLine++;
         if (currentLine < npcLines.Count)
+        {
+            animator.ResetTrigger("WolfSaid");
             StartDialogue();
+        }
         else
         {
             foreach (var button in choiceButtons)
                 button.gameObject.SetActive(false);
             if (value == 4)
             {
-                dialogueText.text = "Я удивлен твоими познаниями! хорошо, этот осколок твой.";
+                animator.SetTrigger("WolfSaid");
+                dialogueText.text = "РЇ СѓРґРёРІР»РµРЅ С‚РІРѕРёРјРё РїРѕР·РЅР°РЅРёСЏРјРё! С…РѕСЂРѕС€Рѕ, СЌС‚РѕС‚ РѕСЃРєРѕР»РѕРє С‚РІРѕР№.";
                 choiceButtons[0].gameObject.SetActive(true);
-                choiceButtons[0].GetComponentInChildren<Text>().text = "Откуда я все это знаю??";
+                choiceButtons[0].GetComponentInChildren<Text>().text = "РћС‚РєСѓРґР° СЏ РІСЃРµ СЌС‚Рѕ Р·РЅР°СЋ??";
                 choiceButtons[0].onClick.RemoveAllListeners();
                 choiceButtons[0].onClick.AddListener(() => { choiceButtons[0].gameObject.SetActive(false); dialoguePanel.SetActive(false); });
                 fragment.SetActive(true);
             }
             else
             {
-
-                dialogueText.text = "Я в тебе разочарован, убирайся ни с чем.";
+                animator.SetTrigger("WolfSaid");
+                dialogueText.text = "РЇ РІ С‚РµР±Рµ СЂР°Р·РѕС‡Р°СЂРѕРІР°РЅ, СѓР±РёСЂР°Р№СЃСЏ РЅРё СЃ С‡РµРј.";
                 choiceButtons[0].gameObject.SetActive(true);
                 choiceButtons[0].GetComponentInChildren<Text>().text = "...";
                 choiceButtons[0].onClick.RemoveAllListeners();
