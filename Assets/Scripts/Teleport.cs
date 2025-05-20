@@ -2,56 +2,52 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
-    [SerializeField] private Transform destination; // �����, ���� ���������������
-    [SerializeField] private KeyCode activationKey = KeyCode.E; // ������� ���������
-    [SerializeField] private float teleportCooldown = 0f; // �������� ����� �������������� (0 - ��� ��������)
+    [SerializeField] private Transform destination;
+    [SerializeField] private float teleportCooldown = 0f;
+    [SerializeField] private bool showDebugLogs = true;
+    [SerializeField] private TruckController truckController; // Ссылка на скрипт грузовика
 
-    private bool playerInRange = false;
     private bool canTeleport = true;
     private float lastTeleportTime;
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        // ��������� ����� �� �����������������
-        if (playerInRange && (Input.GetKeyDown(activationKey) || activationKey is KeyCode.None) && canTeleport)
+        if (other.CompareTag("Player") && canTeleport)
         {
-            TeleportPlayer();
+            TeleportPlayer(other.transform);
 
-            // ���� ����������� �������� - ���������� �������
-            if (teleportCooldown > 0)
+            // Активируем грузовик после телепортации
+            if (truckController != null)
             {
-                canTeleport = false;
-                lastTeleportTime = Time.time;
-                Invoke(nameof(ResetTeleportCooldown), teleportCooldown);
+                truckController.StartMoving();
+            }
+            else if (showDebugLogs)
+            {
+                Debug.LogWarning("TruckController reference not set in Teleporter script!");
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void TeleportPlayer(Transform playerTransform)
     {
-        if (other.CompareTag("Player"))
+        if (destination == null)
         {
-            playerInRange = true;
-            Debug.Log("Press E to teleport"); // reivew: если что, пользователь этого не увидит
+            Debug.LogError("Destination not set in the Teleporter script!");
+            return;
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        playerTransform.position = destination.position;
+
+        if (showDebugLogs)
         {
-            playerInRange = false;
+            Debug.Log($"Player teleported to {destination.name} at {Time.time}");
         }
-    }
 
-    private void TeleportPlayer()
-    {
-        // review: var
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null && destination != null)
+        if (teleportCooldown > 0)
         {
-            player.transform.position = destination.position;
-            Debug.Log($"Teleported to {destination.name} at {Time.time}");
+            canTeleport = false;
+            lastTeleportTime = Time.time;
+            Invoke(nameof(ResetTeleportCooldown), teleportCooldown);
         }
     }
 
