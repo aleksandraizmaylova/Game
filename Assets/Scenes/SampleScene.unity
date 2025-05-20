@@ -623,6 +623,7 @@ MonoBehaviour:
   destination: {fileID: 117393080}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &118870990 stripped
 MonoBehaviour:
@@ -686,6 +687,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &207220147
 MonoBehaviour:
@@ -840,7 +842,6 @@ GameObject:
   m_Component:
   - component: {fileID: 253462757}
   - component: {fileID: 253462761}
-  - component: {fileID: 253462760}
   - component: {fileID: 253462759}
   - component: {fileID: 253462758}
   m_Layer: 0
@@ -938,36 +939,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &253462760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253462756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b602e7a6c18741b43aa68b27970fe141, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 324297538}
-  keyObj: {fileID: 75757882}
-  interactDistance: 2
-  dialoguePanel: {fileID: 1382012121}
-  dialogueText: {fileID: 1919656947}
-  dialogueLines:
-  - "\u041E! \u0442\u044B \u043F\u0440\u043E\u0441\u043D\u0443\u043B\u0441\u044F!"
-  - "\u0423\u0434\u0430\u0447\u0438 \u0441\u0435\u0433\u043E\u0434\u043D\u044F \u0432
-    \u0448\u043A\u043E\u043B\u0435"
-  - "\u041F\u0435\u0440\u0435\u0434 \u0443\u0445\u043E\u0434\u043E\u043C \u043D\u0435
-    \u0437\u0430\u0431\u0443\u0434\u044C \u043A\u043B\u044E\u0447\u0438 \u0438 \u043F\u043E\u0446\u0435\u043B\u043E\u0432\u0430\u0442\u044C
-    \u043B\u044E\u0431\u0438\u043C\u0443\u044E \u043C\u0430\u043C\u0443"
-  - "\u041B\u044E\u0431\u043B\u044E \u0442\u0435\u0431\u044F, \u0445\u043E\u0440\u043E\u0448\u043E
-    \u043F\u0440\u043E\u0432\u0435\u0441\u0442\u0438 \u0432\u0440\u0435\u043C\u044F"
-  - "\u0435\u0435\u0435\u0435\u0435 \u0440\u043E\u043A"
-  action: 0
-  pressHint: {fileID: 1846369969}
-  currentLine: 0
 --- !u!212 &253462761
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1074,6 +1045,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &255022818
 MonoBehaviour:
@@ -1269,6 +1241,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &263556972
 MonoBehaviour:
@@ -1447,7 +1420,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 965108924}
   - {fileID: 1946074192}
   - {fileID: 117393080}
   - {fileID: 1671789127}
@@ -1511,6 +1483,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &325609242
 MonoBehaviour:
@@ -1984,6 +1957,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &462497079
 MonoBehaviour:
@@ -3291,7 +3265,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.6, y: -2, z: -10}
+  m_LocalPosition: {x: -7.6, y: -1.9999914, z: -10.002415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3799,7 +3773,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720585472}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -3962,7 +3936,7 @@ Transform:
   m_GameObject: {fileID: 776529552}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -55.796837, y: 18.886553, z: -9.571588}
+  m_LocalPosition: {x: -55.796837, y: 18.886562, z: -9.574002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4098,6 +4072,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &805660860
 MonoBehaviour:
@@ -4298,6 +4273,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &861095613
 MonoBehaviour:
@@ -4493,6 +4469,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &866511940
 MonoBehaviour:
@@ -4647,7 +4624,6 @@ GameObject:
   m_Component:
   - component: {fileID: 940719058}
   - component: {fileID: 940719062}
-  - component: {fileID: 940719061}
   - component: {fileID: 940719060}
   - component: {fileID: 940719059}
   m_Layer: 0
@@ -4745,36 +4721,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &940719061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940719057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b602e7a6c18741b43aa68b27970fe141, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 324297538}
-  keyObj: {fileID: 75757882}
-  interactDistance: 2
-  dialoguePanel: {fileID: 1382012121}
-  dialogueText: {fileID: 1919656947}
-  dialogueLines:
-  - "\u041E! \u0442\u044B \u043F\u0440\u043E\u0441\u043D\u0443\u043B\u0441\u044F!"
-  - "\u0423\u0434\u0430\u0447\u0438 \u0441\u0435\u0433\u043E\u0434\u043D\u044F \u0432
-    \u0448\u043A\u043E\u043B\u0435"
-  - "\u041F\u0435\u0440\u0435\u0434 \u0443\u0445\u043E\u0434\u043E\u043C \u043D\u0435
-    \u0437\u0430\u0431\u0443\u0434\u044C \u043A\u043B\u044E\u0447\u0438 \u0438 \u043F\u043E\u0446\u0435\u043B\u043E\u0432\u0430\u0442\u044C
-    \u043B\u044E\u0431\u0438\u043C\u0443\u044E \u043C\u0430\u043C\u0443"
-  - "\u041B\u044E\u0431\u043B\u044E \u0442\u0435\u0431\u044F, \u0445\u043E\u0440\u043E\u0448\u043E
-    \u043F\u0440\u043E\u0432\u0435\u0441\u0442\u0438 \u0432\u0440\u0435\u043C\u044F"
-  - "\u0435\u0435\u0435\u0435\u0435 \u0440\u043E\u043A"
-  action: 0
-  pressHint: {fileID: 1846369969}
-  currentLine: 0
 --- !u!212 &940719062
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4969,112 +4915,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!1 &965108921
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 965108924}
-  - component: {fileID: 965108923}
-  - component: {fileID: 965108922}
-  m_Layer: 0
-  m_Name: Finish(left)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!50 &965108922
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 965108921}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &965108923
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 965108921}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 16.62311}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 43.913174}
-  m_EdgeRadius: 0
---- !u!4 &965108924
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 965108921}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.3, y: -21.2, z: -1.2235411}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 311877211}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &986901943
 GameObject:
   m_ObjectHideFlags: 0
@@ -5349,7 +5189,7 @@ Transform:
   m_GameObject: {fileID: 1046075656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.4, y: -1.2, z: -10}
+  m_LocalPosition: {x: 12.4, y: -1.1999915, z: -10.002415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5577,6 +5417,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &1124636177
 MonoBehaviour:
@@ -7807,6 +7648,7 @@ EdgeCollider2D:
   m_Points:
   - {x: 1.0055708, y: -0.14586246}
   - {x: 1.0096817, y: -0.6060353}
+  - {x: 0.07935297, y: -0.6073575}
   - {x: -1.0055708, y: -0.602872}
   - {x: -1.0055704, y: -0.036028028}
   - {x: -0.2741829, y: -0.02187264}
@@ -8330,6 +8172,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &1279528679
 MonoBehaviour:
@@ -8501,7 +8344,7 @@ Transform:
   m_GameObject: {fileID: 1357874322}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.380503, y: 9.764354, z: -10.17387}
+  m_LocalPosition: {x: -11.380503, y: 9.764362, z: -10.176285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8632,6 +8475,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &1369616782
 MonoBehaviour:
@@ -8832,6 +8676,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &1397107388
 MonoBehaviour:
@@ -23758,6 +23603,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!61 &1560569805
 BoxCollider2D:
@@ -23919,7 +23765,7 @@ Transform:
   m_GameObject: {fileID: 1611193991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.452604, y: -0.024142146, z: -9.93392}
+  m_LocalPosition: {x: -6.452604, y: -0.024133563, z: -9.936335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24009,7 +23855,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1654403079}
   - component: {fileID: 1654403083}
-  - component: {fileID: 1654403082}
   - component: {fileID: 1654403081}
   - component: {fileID: 1654403080}
   m_Layer: 0
@@ -24107,36 +23952,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1654403082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654403078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b602e7a6c18741b43aa68b27970fe141, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 324297538}
-  keyObj: {fileID: 75757882}
-  interactDistance: 2
-  dialoguePanel: {fileID: 1382012121}
-  dialogueText: {fileID: 1919656947}
-  dialogueLines:
-  - "\u041E! \u0442\u044B \u043F\u0440\u043E\u0441\u043D\u0443\u043B\u0441\u044F!"
-  - "\u0423\u0434\u0430\u0447\u0438 \u0441\u0435\u0433\u043E\u0434\u043D\u044F \u0432
-    \u0448\u043A\u043E\u043B\u0435"
-  - "\u041F\u0435\u0440\u0435\u0434 \u0443\u0445\u043E\u0434\u043E\u043C \u043D\u0435
-    \u0437\u0430\u0431\u0443\u0434\u044C \u043A\u043B\u044E\u0447\u0438 \u0438 \u043F\u043E\u0446\u0435\u043B\u043E\u0432\u0430\u0442\u044C
-    \u043B\u044E\u0431\u0438\u043C\u0443\u044E \u043C\u0430\u043C\u0443"
-  - "\u041B\u044E\u0431\u043B\u044E \u0442\u0435\u0431\u044F, \u0445\u043E\u0440\u043E\u0448\u043E
-    \u043F\u0440\u043E\u0432\u0435\u0441\u0442\u0438 \u0432\u0440\u0435\u043C\u044F"
-  - "\u0435\u0435\u0435\u0435\u0435 \u0440\u043E\u043A"
-  action: 0
-  pressHint: {fileID: 1846369969}
-  currentLine: 0
 --- !u!212 &1654403083
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24813,7 +24628,7 @@ Transform:
   m_GameObject: {fileID: 1784322153}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.400653, y: -0.8777349, z: -9.955437}
+  m_LocalPosition: {x: -7.400653, y: -0.8777263, z: -9.957851}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24947,7 +24762,7 @@ Transform:
   m_GameObject: {fileID: 1946074191}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.1823235, y: 5.1772394, z: -10.001461}
+  m_LocalPosition: {x: -6.1823235, y: 5.177248, z: -10.003876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25042,7 +24857,7 @@ GameObject:
   - component: {fileID: 1956283112}
   - component: {fileID: 1956283116}
   m_Layer: 0
-  m_Name: Track_0
+  m_Name: Track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25179,6 +24994,7 @@ MonoBehaviour:
   destination: {fileID: 578338319}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 1956283116}
 --- !u!50 &1956283115
 Rigidbody2D:
@@ -25219,9 +25035,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4394364d6503cbd46afaecde9c30e981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 12
   direction: {x: -1, y: 0, z: 0}
-  startMoving: 1
+  showDebugLogs: 1
+  isMoving: 0
 --- !u!1 &1959491332
 GameObject:
   m_ObjectHideFlags: 0
@@ -25662,7 +25479,8 @@ MonoBehaviour:
   destination: {fileID: 117393080}
   teleportCooldown: 0
   showDebugLogs: 1
-  truckController: {fileID: 0}
+  requiredKeyName: Key
+  truckController: {fileID: 1956283116}
 --- !u!1 &2002494396
 GameObject:
   m_ObjectHideFlags: 0
@@ -26012,6 +25830,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &2046287593
 MonoBehaviour:
@@ -26357,6 +26176,7 @@ MonoBehaviour:
   destination: {fileID: 98394157}
   teleportCooldown: 0
   showDebugLogs: 1
+  requiredKeyName: Key
   truckController: {fileID: 0}
 --- !u!114 &2145820958
 MonoBehaviour:
@@ -26789,31 +26609,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -1.9999914
       objectReference: {fileID: 0}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0024143567
       objectReference: {fileID: 0}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99999374
       objectReference: {fileID: 0}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.0035379606
       objectReference: {fileID: 0}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 0.405
       objectReference: {fileID: 0}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
