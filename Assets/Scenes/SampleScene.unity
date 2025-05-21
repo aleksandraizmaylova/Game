@@ -547,8 +547,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 117393080}
-  - component: {fileID: 117393081}
-  - component: {fileID: 117393082}
   m_Layer: 0
   m_Name: TeleportExit
   m_TagString: Untagged
@@ -571,60 +569,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 311877211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &117393081
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117393079}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 3.6297753, y: -1.9119136}
-  m_Size: {x: 0.3364525, y: 0.3364525}
-  m_Direction: 1
---- !u!114 &117393082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117393079}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff922f746c3a1aa43b78ab1429f8b0a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 117393080}
-  teleportCooldown: 0
-  showDebugLogs: 1
-  requiredKeyName: Key
-  truckController: {fileID: 0}
 --- !u!114 &118870990 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2710639791654014564, guid: e17b0664f2b99451cb7272b40b1a199d, type: 3}
@@ -685,12 +629,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &207220147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,12 +990,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &255022818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1243,12 +1189,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &263556972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1426,7 +1373,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1946074192}
   - {fileID: 117393080}
   - {fileID: 1671789127}
   - {fileID: 1956283111}
@@ -1489,12 +1435,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &325609242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,9 +1739,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
+  showDebugLogs: 1
+  activationKey: 0
+  requiredKeyName: Key
+  truckNeeded: 0
+  truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!1 &381541033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &381541034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1929,11 +1880,11 @@ Transform:
   m_GameObject: {fileID: 381541033}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6337042, y: -0.7095109, z: 0}
-  m_LocalScale: {x: 1.8681529, y: 1.8681529, z: 1.8681529}
+  m_LocalPosition: {x: -10.55, y: -1.9300001, z: 0}
+  m_LocalScale: {x: 3.2912686, y: 3.2912686, z: 3.2912686}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1984751384}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &462497076
 GameObject:
@@ -1984,12 +1935,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &462497079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3164,6 +3116,151 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &492529153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 492529154}
+  - component: {fileID: 492529157}
+  - component: {fileID: 492529156}
+  - component: {fileID: 492529155}
+  m_Layer: 0
+  m_Name: start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &492529154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492529153}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.36, y: -5.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1268340766}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &492529155
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492529153}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 2518164588660002048, guid: d032006bdc1d61a4f9d0542117838434, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 5.12, y: 5.12}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &492529156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492529153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff922f746c3a1aa43b78ab1429f8b0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 890488626}
+  teleportCooldown: 0
+  showDebugLogs: 1
+  activationKey: 0
+  requiredKeyName: 
+  truckNeeded: 0
+  truckController: {fileID: 0}
+  targetVCam: {fileID: 1784322156}
+--- !u!58 &492529157
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492529153}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.020848274, y: 0.010104895}
+  m_Radius: 0.117
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3296,7 +3393,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.6, y: -1.9999914, z: -10.002415}
+  m_LocalPosition: {x: 76.396835, y: -10.20155, z: -10.002415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3422,7 +3519,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 578338319}
-  - component: {fileID: 578338320}
   m_Layer: 0
   m_Name: TeleportExit
   m_TagString: Untagged
@@ -3445,42 +3541,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2012501384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &578338320
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578338318}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.25505614}
-  m_Radius: 0.40840697
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3624,8 +3684,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -950424283
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 497600754102043572, guid: 28a17a341663e42dbbdcbd1998a904da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3967,7 +4027,7 @@ Transform:
   m_GameObject: {fileID: 776529552}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -55.796837, y: 18.886562, z: -9.574002}
+  m_LocalPosition: {x: -56.836838, y: 13.1665535, z: -9.574002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4101,12 +4161,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &805660860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4304,12 +4365,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &861095613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4502,12 +4564,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &866511940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4651,6 +4714,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.7023162, y: 0.4625343}
   m_EdgeRadius: 0
+--- !u!1 &890488625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 890488626}
+  m_Layer: 0
+  m_Name: exit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &890488626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890488625}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.51, y: -0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1268340766}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &895593349
 GameObject:
   m_ObjectHideFlags: 0
@@ -4679,7 +4773,7 @@ Transform:
   m_GameObject: {fileID: 895593349}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.210503, y: 11.784353, z: -10.17387}
+  m_LocalPosition: {x: -12.420503, y: 8.044254, z: -10.147981}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5223,8 +5317,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -950424283
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -5648972834745329495, guid: fe81964cba94446ddbab0df45b86ce7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5438,7 +5532,7 @@ Transform:
   m_GameObject: {fileID: 1046075656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.4, y: -1.1999915, z: -10.002415}
+  m_LocalPosition: {x: 11.36, y: -6.9199996, z: -10.002415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5664,12 +5758,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &1124636177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8553,8 +8648,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 890488626}
   - {fileID: 2000176804}
-  - {fileID: 1084660291}
+  - {fileID: 492529154}
   - {fileID: 911959835}
   - {fileID: 1784322154}
   - {fileID: 1156186800}
@@ -8609,12 +8705,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &1279528679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8785,7 +8882,7 @@ Transform:
   m_GameObject: {fileID: 1357874322}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.380503, y: 9.764362, z: -10.176285}
+  m_LocalPosition: {x: -12.420503, y: 4.044354, z: -10.176285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9001,12 +9098,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &1369616782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9204,12 +9302,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &1397107388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23891,7 +23990,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476266819}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -23950,6 +24049,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e612ab18aa35f445291039ef9372df0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &1476266835
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476266819}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.049202472, y: -0.23784071}
+  m_Size: {x: 1.3087692, y: 0.06789327}
+  m_Direction: 1
 --- !u!1 &1560086412
 GameObject:
   m_ObjectHideFlags: 0
@@ -24033,43 +24169,6 @@ PolygonCollider2D:
       - {x: -1.99, y: 1.01}
       - {x: -1.99, y: -5.96}
   m_UseDelaunayMesh: 0
---- !u!70 &1476266835
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476266819}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.049202472, y: -0.23784071}
-  m_Size: {x: 1.3087692, y: 0.06789327}
-  m_Direction: 1
 --- !u!1 &1560569799
 GameObject:
   m_ObjectHideFlags: 0
@@ -24216,12 +24315,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!61 &1560569805
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24433,80 +24533,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2012501384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1611193993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611193991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraDistance: 10
-  DeadZoneDepth: 0
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 0
-      Size: {x: 0.2, y: 0.2}
-    HardLimits:
-      Enabled: 0
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
---- !u!114 &1611193994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611193991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Priority:
-    Enabled: 0
-    m_Value: 0
-  OutputChannel: 1
-  StandbyUpdate: 2
-  m_StreamingVersion: 20241001
-  m_LegacyPriority: 0
-  Target:
-    TrackingTarget: {fileID: 324297538}
-    LookAtTarget: {fileID: 0}
-    CustomLookAtTarget: 0
-  Lens:
-    FieldOfView: 34
-    OrthographicSize: 5.2295127
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
-    Dutch: 0
-    ModeOverride: 0
-    PhysicalProperties:
-      GateFit: 2
-      SensorSize: {x: 21.946, y: 16.002}
-      LensShift: {x: 0, y: 0}
-      FocusDistance: 10
-      Iso: 200
-      ShutterSpeed: 0.005
-      Aperture: 16
-      BladeCount: 5
-      Curvature: {x: 2, y: 11}
-      BarrelClipping: 0.25
-      Anamorphism: 0
-  BlendHint: 0
 --- !u!1 &1654403078
 GameObject:
   m_ObjectHideFlags: 0
@@ -24669,38 +24695,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1662150192
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1662150193}
-  m_Layer: 0
-  m_Name: "\u0421\u0446\u0435\u043D\u0430 \u0414\u043E\u043C 1"
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1662150193
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662150192}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19934697, y: -1.1222651, z: -0.04456345}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1984751384}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1665341047
 GameObject:
   m_ObjectHideFlags: 0
@@ -25290,7 +25284,7 @@ Transform:
   m_GameObject: {fileID: 1784322153}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.34, y: -2.0041423, z: -9.93392}
+  m_LocalPosition: {x: -7.55, y: -5.744142, z: -9.936335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25418,7 +25412,7 @@ Transform:
   m_GameObject: {fileID: 1791374627}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.012323, y: 3.1972394, z: -10.001461}
+  m_LocalPosition: {x: -7.222324, y: -0.5427604, z: -10.003876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25534,136 +25528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1919656947 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3640219365259673338, guid: e17b0664f2b99451cb7272b40b1a199d, type: 3}
-  m_PrefabInstance: {fileID: 812290364643122543}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1946074191
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1946074192}
-  - component: {fileID: 1946074194}
-  - component: {fileID: 1946074193}
-  m_Layer: 0
-  m_Name: CinemachineCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1946074192
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1946074191}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.1823235, y: 5.177248, z: -10.003876}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 311877211}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.825065, y: -1.76}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1865286161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1946074191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 1084660291}
-  targetVCam: {fileID: 1784322156}
-  activationKey: 0
-  teleportCooldown: 1
---- !u!222 &1865286162
-CanvasRenderer:
-  CameraDistance: 10
-  DeadZoneDepth: 0
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 0
-      Size: {x: 0.2, y: 0.2}
-    HardLimits:
-      Enabled: 0
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
---- !u!114 &1946074194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865286159}
-  m_CullTransparentMesh: 1
---- !u!58 &1865286163
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865286159}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.33817387, y: -1.0354409}
-  m_Radius: 0.49302796
 --- !u!1 &1903764841
 GameObject:
   m_ObjectHideFlags: 0
@@ -25741,40 +25605,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Priority:
-    Enabled: 0
-    m_Value: 0
-  OutputChannel: 1
-  StandbyUpdate: 2
-  m_StreamingVersion: 20241001
-  m_LegacyPriority: 0
-  Target:
-    TrackingTarget: {fileID: 324297538}
-    LookAtTarget: {fileID: 0}
-    CustomLookAtTarget: 0
-  Lens:
-    FieldOfView: 34
-    OrthographicSize: 5.2295127
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
-    Dutch: 0
-    ModeOverride: 0
-    PhysicalProperties:
-      GateFit: 2
-      SensorSize: {x: 21.946, y: 16.002}
-      LensShift: {x: 0, y: 0}
-      FocusDistance: 10
-      Iso: 200
-      ShutterSpeed: 0.005
-      Aperture: 16
-      BladeCount: 5
-      Curvature: {x: 2, y: 11}
-      BarrelClipping: 0.25
-      Anamorphism: 0
-  BlendHint: 0
 --- !u!1 &1956283109
 GameObject:
   m_ObjectHideFlags: 0
@@ -25925,12 +25758,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 578338319}
-  targetVCam: {fileID: 895593352}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
-  truckController: {fileID: 1956283116}
+  truckNeeded: 0
+  truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!50 &1956283115
 Rigidbody2D:
   serializedVersion: 5
@@ -26055,7 +25889,7 @@ MonoBehaviour:
   fragment: {fileID: 1197583952}
   playerMove: {fileID: 1476266831}
   dialoguePanel: {fileID: 1382012121}
-  dialogueText: {fileID: 1919656947}
+  dialogueText: {fileID: 0}
   pressHint: {fileID: 1846369969}
 --- !u!4 &1962606494
 Transform:
@@ -26186,152 +26020,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.3898735, y: 0.08577156}
   m_Size: {x: 1.4716873, y: 2.7348824}
   m_Direction: 0
---- !u!1 &1984751381
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1984751384}
-  - component: {fileID: 1984751383}
-  - component: {fileID: 1984751385}
-  m_Layer: 0
-  m_Name: "\u0444\u043E\u043D_0"
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &1984751383
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984751381}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -8635233584502960418, guid: f8152ba2ab15f4ee89b11a9490d8fa81, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 6.6, y: 4.4}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &1984751384
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984751381}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.990653, y: 0.4422651, z: 0.04456345}
-  m_LocalScale: {x: 1.7617769, y: 1.7617769, z: 1.7617769}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2131455830}
-  - {fileID: 381541037}
-  m_Father: {fileID: 1662150193}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &1984751385
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984751381}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.6326083, y: -2.192198}
-  - {x: 0.6274736, y: -1.0473267}
-  - {x: -1.7931896, y: -1.0433735}
-  - {x: -1.806165, y: -2.182311}
-  - {x: -2.7090569, y: -2.2175894}
-  - {x: -2.7144098, y: -0.41276342}
-  - {x: -0.6048259, y: -0.421277}
-  - {x: 1.5819525, y: -0.4290556}
-  - {x: 1.5995543, y: -1.1058877}
-  - {x: 2.2206109, y: -1.1091762}
-  - {x: 2.1920197, y: 0.42178234}
-  - {x: 3.311653, y: 0.4239365}
-  - {x: 3.3148644, y: -1.935146}
-  - {x: 3.3094916, y: -2.2099276}
-  - {x: 0.63547945, y: -2.2075994}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!1 &2000176803
 GameObject:
   m_ObjectHideFlags: 0
@@ -26414,11 +26102,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 117393080}
-  targetVCam: {fileID: 1791374630}
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 101
   requiredKeyName: Key
-  truckController: {fileID: 1956283116}
+  truckNeeded: 0
+  truckController: {fileID: 0}
+  targetVCam: {fileID: 1791374630}
 --- !u!1 &2002494396
 GameObject:
   m_ObjectHideFlags: 0
@@ -26747,7 +26437,7 @@ Transform:
   m_GameObject: {fileID: 2028689490}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -58.62684, y: 16.906553, z: -9.571588}
+  m_LocalPosition: {x: -56.836838, y: 13.1665535, z: -9.574002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26896,12 +26586,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &2046287593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27074,7 +26765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2131455827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27190,11 +26881,11 @@ Transform:
   m_GameObject: {fileID: 2131455826}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2657672, y: -1.5382197, z: 0}
-  m_LocalScale: {x: 1.8681529, y: 1.8681529, z: 1.8681529}
+  m_LocalPosition: {x: -12.96, y: -3.39, z: 0}
+  m_LocalScale: {x: 3.2912686, y: 3.2912686, z: 3.2912686}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1984751384}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145820955
 GameObject:
@@ -27245,12 +26936,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 98394157}
-  targetVCam: {fileID: 2028689492}
-  activationKey: 0
   teleportCooldown: 0
   showDebugLogs: 1
+  activationKey: 0
   requiredKeyName: Key
+  truckNeeded: 0
   truckController: {fileID: 0}
+  targetVCam: {fileID: 0}
 --- !u!114 &2145820958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27618,11 +27310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4436114397391911003, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_Radius
-      value: 0.08389596
+      value: 0.117
       objectReference: {fileID: 0}
     - target: {fileID: 4436114397391911003, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4436114397391911003, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_Offset.x
@@ -27678,11 +27370,11 @@ PrefabInstance:
       objectReference: {fileID: 1753200602}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.43
+      value: -8.64
       objectReference: {fileID: 0}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9999914
+      value: -7.72
       objectReference: {fileID: 0}
     - target: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27798,9 +27490,10 @@ SceneRoots:
   - {fileID: 1347749845078830438}
   - {fileID: 812290364643122543}
   - {fileID: 531045658}
-  - {fileID: 1662150193}
   - {fileID: 1268340766}
   - {fileID: 311877211}
   - {fileID: 2012501384}
-  - {fileID: 2002494398}
   - {fileID: 1959491333}
+  - {fileID: 2002494398}
+  - {fileID: 2131455830}
+  - {fileID: 381541037}

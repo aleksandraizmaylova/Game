@@ -69,7 +69,7 @@ public class DialogueManager : MonoBehaviour
 
     bool IsPlayerClose()
     {
-        return Vector3.Distance(transform.position, player.position) <= interactDistance;
+        return Vector2.Distance(transform.position, player.position) <= interactDistance;
     }
 
     private void Update()
