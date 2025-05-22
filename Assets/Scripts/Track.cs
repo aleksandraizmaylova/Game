@@ -7,6 +7,8 @@ public class Track : MonoBehaviour
     public Direction Direction;
     public GameObject Finish;
     
+    public bool isMoving;
+    
     private Rigidbody2D rb2;
     private Vector2 start;
     private Collider2D finish;
@@ -19,8 +21,12 @@ public class Track : MonoBehaviour
         CurrentSpeed += 5;
     }
 
+    public void StartMoving() => isMoving = true;
+
     private void FixedUpdate()
     {
+        if (!isMoving) 
+            return;
         var movementVector = Direction == Direction.Left ? Vector2.left : Vector2.right;
         rb2.linearVelocity = movementVector * CurrentSpeed;
     }

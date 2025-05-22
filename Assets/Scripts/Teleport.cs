@@ -6,13 +6,10 @@ public class Teleporter : MonoBehaviour
     [Header("Основные настройки")]
     [SerializeField] private Transform destination;
     [SerializeField] private float teleportCooldown;
-    [SerializeField] private bool showDebugLogs = true;
     [SerializeField] private KeyCode activationKey = KeyCode.E;
+    [Space]
+    [SerializeField] private bool isConditional;
     [SerializeField] private string requiredKeyName = "Key";
-
-    [Header("Ссылка на грузовик")]
-    [SerializeField] private bool truckNeeded;
-    [SerializeField] private TruckController truckController;
 
     [Header("Teleport Settings")]
     [SerializeField] private CinemachineCamera targetVCam;
@@ -24,40 +21,24 @@ public class Teleporter : MonoBehaviour
 
     private void Start()
     {
-        playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-
-        if (truckController == null && showDebugLogs && truckNeeded)
-        {
-            Debug.LogWarning("TruckController не назначен в инспекторе!", this);
-        }
+        if (isConditional)
+            playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
-
-    private void ResetTeleportCooldown() => canTeleport = true;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player") || !canTeleport) return;
-
-        if (HasRequiredKey())
-        {
+        if (!other.CompareTag("Player") || !canTeleport) 
+            return;
+        if (!isConditional || HasRequiredKey())
             TeleportPlayer();
-            ActivateTruck();
-        }
-        else if (showDebugLogs)
-        {
-            Debug.Log($"Для телепортации нужен ключ: {requiredKeyName}", this);
-        }
-        
     }
 
     private bool HasRequiredKey()
     {
-        if (string.IsNullOrEmpty(requiredKeyName)) return true;
         if (playerInventory == null) return false;
 
         var backpack = playerInventory.openedBP?.GetComponent<BackPack>();
         if (backpack == null) return false;
-
         foreach (var slot in backpack.Slots)
         {
             if (slot.transform.childCount > 0)
@@ -65,7 +46,6 @@ public class Teleporter : MonoBehaviour
                 Transform item = slot.transform.GetChild(0);
                 if (item.name.Contains(requiredKeyName))
                 {
-                    if (showDebugLogs) Debug.Log($"Найден ключ: {item.name}", this);
                     return true;
                 }
             }
@@ -100,20 +80,6 @@ public class Teleporter : MonoBehaviour
             canTeleport = false;
             Invoke(nameof(ResetTeleport), teleportCooldown);
         }
-    }
-
-    private void ActivateTruck()
-    {
-        if (!truckNeeded)
-            return;
-        if (truckController == null)
-        {
-            Debug.LogError("Не могу активировать грузовик - контроллер не назначен!", this);
-            return;
-        }
-
-        truckController.StartMoving();
-        if (showDebugLogs) Debug.Log("Грузовик получил команду двигаться", this);
     }
 
     private void ResetTeleport() => canTeleport = true;
