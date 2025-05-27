@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     public void ChangeSpeed(float speed)
     {
         currentSpeed = speed;
+        if (speed == 0)
+            canMove = false;
     }
 
     private void Update()
@@ -45,7 +47,6 @@ public class Player : MonoBehaviour
     {
         if (canMove)
         {
-
             var movementVector = GameInput.Instance.GetMovementVector();
             rb2.linearVelocity = movementVector * currentSpeed;
 
