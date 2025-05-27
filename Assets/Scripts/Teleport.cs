@@ -1,3 +1,4 @@
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -25,12 +26,24 @@ public class Teleporter : MonoBehaviour
             playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
 
+    private void Update()
+    {
+        if (playerInRange 
+            && (Input.GetKeyDown(activationKey) || activationKey == KeyCode.None)
+            && (!isConditional || HasRequiredKey()))
+            TeleportPlayer();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player") || !canTeleport) 
-            return;
-        if (!isConditional || HasRequiredKey())
-            TeleportPlayer();
+        if (other.CompareTag("Player") && canTeleport)
+            playerInRange = true;
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+            playerInRange = false;
     }
 
     private bool HasRequiredKey()
