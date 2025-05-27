@@ -6,26 +6,32 @@ public class PickUp : MonoBehaviour
     private BackPack backPack;
     public GameObject slotButton;
     public bool isPicked = false;
+    private bool isPlayerNear;
 
     private void Start()
     {
         Inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         backPack = Inventory.openedBP.GetComponent<BackPack>();
     }
-    
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && Input.GetKey(KeyCode.Q))
-            PickObject();
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // review: логика дублируется, стоит выделить метод
-        if (other.CompareTag("Player") && Input.GetKey(KeyCode.Q))
+        if (other.CompareTag("Player"))
+            isPlayerNear = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+            isPlayerNear = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Q) && isPlayerNear)
             PickObject();
     }
-    
+
     private void PickObject()
     {
         for (var i = 0; i < backPack.Slots.Length; i++)
