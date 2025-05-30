@@ -34,42 +34,48 @@ public class Player : MonoBehaviour
     public void ChangeSpeed(float speed)
     {
         currentSpeed = speed;
-        if (speed == 0)
-            canMove = false;
+    }
+
+    private void Update()
+    {
+        //canMove = true;
     }
 
     private void HandleMovement()
     {
-        var movementVector = GameInput.Instance.GetMovementVector();
-        rb2.linearVelocity = movementVector * currentSpeed;
-
-        // review: стоит выделить метод IsPlayerMoving
-        if (canMove
-            && (Mathf.Abs(movementVector.x) > minMovingSpeed || Mathf.Abs(movementVector.y) > minMovingSpeed))
+        if (canMove)
         {
-            // ������� ��������� ������������ �������� (����� ���������)
-            if (Mathf.Abs(movementVector.y) > minMovingSpeed)
+
+            var movementVector = GameInput.Instance.GetMovementVector();
+            rb2.linearVelocity = movementVector * currentSpeed;
+
+            // review: стоит выделить метод IsPlayerMoving
+            if (Mathf.Abs(movementVector.x) > minMovingSpeed || Mathf.Abs(movementVector.y) > minMovingSpeed)
             {
-                isRunningW = movementVector.y > 0;
-                isRunningS = movementVector.y < 0;
-                // ���� �������� �����/����, ���������� �������������� �����������
-                isRunningA = false;
-                isRunningD = false;
-            }
-            else
-            {
-                // ���� ��� ������������� ��������, ��������� ��������������
-                isRunningD = movementVector.x > 0;
-                isRunningA = movementVector.x < 0;
+                // ������� ��������� ������������ �������� (����� ���������)
+                if (Mathf.Abs(movementVector.y) > minMovingSpeed)
+                {
+                    isRunningW = movementVector.y > 0;
+                    isRunningS = movementVector.y < 0;
+                    // ���� �������� �����/����, ���������� �������������� �����������
+                    isRunningA = false;
+                    isRunningD = false;
+                }
+                else
+                {
+                    // ���� ��� ������������� ��������, ��������� ��������������
+                    isRunningD = movementVector.x > 0;
+                    isRunningA = movementVector.x < 0;
+                }
+                return;
             }
         }
         else
-        {
-            isRunningW = false;
-            isRunningA = false;
-            isRunningS = false;
-            isRunningD = false;
-        }
+            rb2.linearVelocity = Vector2.zero;
+        isRunningW = false;
+        isRunningA = false;
+        isRunningS = false;
+        isRunningD = false;
     }
 
     public bool IsRunningW() => isRunningW;

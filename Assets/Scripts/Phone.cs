@@ -21,6 +21,8 @@ public class Phone : MonoBehaviour
     public CinemachineCamera closeUpCamera;
     public CinemachineCamera longShotCamera;
     public GameObject phone;
+    public CinemachineCamera hospitalCamera;
+    public GameObject hospitalTeleport;
     
     private int result;
     private Player player;
@@ -64,14 +66,31 @@ public class Phone : MonoBehaviour
             longShotCamera.enabled = true;
             player.transform.position = position;
         }
+        if (result > phoneNumber)
+        {
+            phone.SetActive(false);
+            result = -1;
+            closeUpCamera.enabled = false;
+            hospitalCamera.enabled = true;
+            player.transform.position = hospitalTeleport.transform.position;
+        }
     }
 
     public void Push(int i)
     {
+        result = result * 10 + i;
+        Debug.Log($"result: {result}");
+        
+        if (result >= phoneNumber)
+        {
+            animator.SetTrigger($"{i}");
+            dialoguePanel.SetActive(true);
+            dialogueText.text = "Гудки...";
+            return;
+        }
+        
         animator.SetTrigger($"{i}");
         dialoguePanel.SetActive(true);
         dialogueText.text = $"{i}...";
-        result = result * 10 + i;
-        Debug.Log($"result: {result}");
     }
 }
