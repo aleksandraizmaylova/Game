@@ -28,12 +28,11 @@ public class Fragment : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             cutscene.SetActive(true);
+            MusicManager.Instance.StopMusic();
             videoCutscene.Play();
             Mirror.ActivateFragment(fragmentNumber);
-            if (destination != null)
-                TeleportPlayer();
-            Destroy(gameObject);
         }
+
     }
     private void TeleportPlayer()
     {
@@ -46,5 +45,8 @@ public class Fragment : MonoBehaviour
     private void OnVideoFinished(VideoPlayer vp)
     {
         cutscene.SetActive(false);
+        if (destination != null)
+            TeleportPlayer();
+        Destroy(gameObject);
     }
 }
