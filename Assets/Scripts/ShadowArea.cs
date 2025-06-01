@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ShadowArea : MonoBehaviour
 {
     public float timer;
+    public Text timerText;
     public GameObject teleporter;
     public GameObject panel;
     public Text text;
@@ -41,10 +42,14 @@ public class ShadowArea : MonoBehaviour
             spoken = true;
         }
         if (timer > 0)
+        {
             timer -= Time.deltaTime;
+            timerText.text = $"{(int)timer}";
+        }
         else
         {
             teleporter.SetActive(true);
+            timerText.text = "";
         }
     }
 
@@ -61,6 +66,7 @@ public class ShadowArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            player.ChangeSpeed(Constants.NormalSpeed);
             playerLight.enabled = false;
             globalLight.enabled = true;
         }

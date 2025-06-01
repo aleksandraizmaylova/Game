@@ -9,6 +9,5 @@ public class GraveAnim : MonoBehaviour
     {
         fragment.SetActive(true);
         grave.SetActive(false);
-        Player.Instance.ChangeSpeed(Constants.NormalSpeed);
     }
 }
