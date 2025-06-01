@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1098d5d21b3b74cdd9db61040cca1d01
+guid: 8415c06ce910f4a19aa8fd7ad6e18985
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -971230040111706205
-    second: "\u041D\u0430\u0434\u0433\u0440\u043E\u0431\u0438\u0435_0"
+      213: 3028721624867921974
+    second: Grave2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u041D\u0430\u0434\u0433\u0440\u043E\u0431\u0438\u0435_0"
+      name: Grave2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 20
-        height: 27
+        height: 28
       alignment: 9
-      pivot: {x: 0.49737534, y: 0.19670452}
+      pivot: {x: 0.5157481, y: 0.18878886}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3af04ff9c6f7582f0800000000000000
-      internalID: -971230040111706205
+      spriteID: 630ebcd554e280a20800000000000000
+      internalID: 3028721624867921974
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6b207018bc3c0451f916620383cc79bc
+    spriteID: ec43320914a524549ab6623c54d2aad3
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u041D\u0430\u0434\u0433\u0440\u043E\u0431\u0438\u0435_0": -971230040111706205
+      Grave2_0: 3028721624867921974
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
