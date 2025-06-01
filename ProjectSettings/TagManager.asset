@@ -9,6 +9,8 @@ TagManager:
   - TeleportEntrance
   - CameraAnchor
   - GlobalLight
+  - Dad
+  - Mum
   layers:
   - Default
   - TransparentFX

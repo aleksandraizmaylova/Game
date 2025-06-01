@@ -1,5 +1,7 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HospitalDialogue : MonoBehaviour
 {
@@ -17,11 +19,13 @@ public class HospitalDialogue : MonoBehaviour
     public GameObject bookObject; // Ссылка на уже существующую книгу на сцене
     public GameObject TeleportEntrance;
 
+
     public GameObject pressHint;
     public KeyCode interactKey = KeyCode.E;
 
     private int currentMessageIndex = 0;
     private bool isDialogueActive = false;
+
 
     [System.Serializable]
     public class DialogueMessage
@@ -119,6 +123,11 @@ public class HospitalDialogue : MonoBehaviour
             {
                 TeleportEntrance.SetActive(true);
             }
+
+            if (currentMessageIndex == 6 && TeleportEntrance != null)
+            {
+                TeleportEntrance.SetActive(true);
+            }
         }
         else
         {
@@ -155,6 +164,7 @@ public class HospitalDialogue : MonoBehaviour
         {
             Debug.LogError("Не назначено поле для сообщения!");
         }
+
     }
 
     void EndDialogue()
@@ -163,6 +173,7 @@ public class HospitalDialogue : MonoBehaviour
         {
             dialoguePanel.SetActive(false);
         }
+        nameText.text = "";
         isDialogueActive = false;
         currentMessageIndex = 0;
     }

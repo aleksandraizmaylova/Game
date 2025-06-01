@@ -11,6 +11,7 @@ public class Teleporter : MonoBehaviour
     [Space]
     [SerializeField] private bool isConditional;
     [SerializeField] private string requiredKeyName = "Key";
+    [SerializeField] public GameObject nurse;
 
     [Header("Teleport Settings")]
     [SerializeField] private CinemachineCamera targetVCam;
@@ -25,6 +26,8 @@ public class Teleporter : MonoBehaviour
     {
         if (isConditional)
             playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+
+        nurse.SetActive(false);
     }
 
     private void Update()
