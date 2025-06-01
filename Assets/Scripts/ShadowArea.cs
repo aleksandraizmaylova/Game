@@ -15,6 +15,7 @@ public class ShadowArea : MonoBehaviour
     private Light2D globalLight;
     private Player player;
     private bool spoken;
+    private bool timerStarted;
     
     private void Start()
     {
@@ -25,7 +26,7 @@ public class ShadowArea : MonoBehaviour
 
     private void Update()
     {
-        if (!player.canMove)
+        if (!player.canMove || !timerStarted)
             return;
         if (timer is < 5 and > 3)
         {
@@ -57,6 +58,7 @@ public class ShadowArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            timerStarted = true;
             globalLight.enabled = false;
             playerLight.enabled = true;
         }
@@ -69,6 +71,7 @@ public class ShadowArea : MonoBehaviour
             player.ChangeSpeed(Constants.NormalSpeed);
             playerLight.enabled = false;
             globalLight.enabled = true;
+            timer = 0;
         }
     }
 }

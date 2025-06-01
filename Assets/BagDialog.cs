@@ -23,20 +23,20 @@ public class BagDialogueManager : MonoBehaviour
     private bool isDialogueActive;
     private int currentLine = 0;
 
-    // Диалоговые данные
-    private readonly List<string> npcLines = new List<string>
+    // Р”РёР°Р»РѕРіРѕРІС‹Рµ РґР°РЅРЅС‹Рµ
+    private readonly List<string> npcLines = new()
     {
-        "Похоже, мама забыла сумку...",
-        "Здесь лежат документы, стоит ли мне их посмотреть?",
-        "Хмм... Свидетельство об усыновлении?",
-        "Впервые вижу это имя",
-        "А это свидетельство о смерти?..."
+        "РџРѕС…РѕР¶Рµ, РјР°РјР° Р·Р°Р±С‹Р»Р° СЃСѓРјРєСѓ...",
+        "Р—РґРµСЃСЊ Р»РµР¶Р°С‚ РґРѕРєСѓРјРµРЅС‚С‹, СЃС‚РѕРёС‚ Р»Рё РјРЅРµ РёС… РїРѕСЃРјРѕС‚СЂРµС‚СЊ?",
+        "РҐРјРј... РЎРІРёРґРµС‚РµР»СЊСЃС‚РІРѕ РѕР± СѓСЃС‹РЅРѕРІР»РµРЅРёРё?",
+        "Р’РїРµСЂРІС‹Рµ РІРёР¶Сѓ СЌС‚Рѕ РёРјСЏ",
+        "Рђ СЌС‚Рѕ СЃРІРёРґРµС‚РµР»СЊСЃС‚РІРѕ Рѕ СЃРјРµСЂС‚Рё?..."
     };
 
-    private readonly List<string[]> playerChoices = new List<string[]>
+    private readonly List<string[]> playerChoices = new()
     {
-        new string[] { "Заглянуть в сумку", "Не трогать сумку" },
-        new string[] { "Посмотреть документы", "Не трогать документы" },
+        new string[] { "Р—Р°РіР»СЏРЅСѓС‚СЊ РІ СЃСѓРјРєСѓ", "РќРµ С‚СЂРѕРіР°С‚СЊ СЃСѓРјРєСѓ" },
+        new string[] { "РџРѕСЃРјРѕС‚СЂРµС‚СЊ РґРѕРєСѓРјРµРЅС‚С‹", "РќРµ С‚СЂРѕРіР°С‚СЊ РґРѕРєСѓРјРµРЅС‚С‹" },
         new string[] { "..." },
         new string[] { "..."},
         new string[] { "..."}
@@ -82,16 +82,16 @@ public class BagDialogueManager : MonoBehaviour
             return;
         }
 
-        // Показываем текущую реплику NPC
+        // РџРѕРєР°Р·С‹РІР°РµРј С‚РµРєСѓС‰СѓСЋ СЂРµРїР»РёРєСѓ NPC
         dialogueText.text = npcLines[currentLine];
 
-        // Скрываем все кнопки
+        // РЎРєСЂС‹РІР°РµРј РІСЃРµ РєРЅРѕРїРєРё
         foreach (var button in choiceButtons)
         {
             button.gameObject.SetActive(false);
         }
 
-        // Показываем доступные варианты ответа
+        // РџРѕРєР°Р·С‹РІР°РµРј РґРѕСЃС‚СѓРїРЅС‹Рµ РІР°СЂРёР°РЅС‚С‹ РѕС‚РІРµС‚Р°
         if (currentLine < playerChoices.Count)
         {
             string[] choices = playerChoices[currentLine];
@@ -100,7 +100,7 @@ public class BagDialogueManager : MonoBehaviour
                 choiceButtons[i].gameObject.SetActive(true);
                 choiceButtons[i].GetComponentInChildren<Text>().text = choices[i];
 
-                // Важно: создаем локальную копию индекса
+                // Р’Р°Р¶РЅРѕ: СЃРѕР·РґР°РµРј Р»РѕРєР°Р»СЊРЅСѓСЋ РєРѕРїРёСЋ РёРЅРґРµРєСЃР°
                 int choiceIndex = i;
                 choiceButtons[i].onClick.RemoveAllListeners();
                 choiceButtons[i].onClick.AddListener(() => OnChoiceSelected(choiceIndex));
@@ -108,27 +108,27 @@ public class BagDialogueManager : MonoBehaviour
         }
         else
         {
-            // Если диалог закончен
+            // Р•СЃР»Рё РґРёР°Р»РѕРі Р·Р°РєРѕРЅС‡РµРЅ
             EndDialogue();
         }
     }
 
     private void OnChoiceSelected(int choiceIndex)
     {
-        // Логика выбора варианта
+        // Р›РѕРіРёРєР° РІС‹Р±РѕСЂР° РІР°СЂРёР°РЅС‚Р°
         switch (currentLine)
         {
-            case 0: // Первый выбор
+            case 0: // РџРµСЂРІС‹Р№ РІС‹Р±РѕСЂ
                 if (choiceIndex == 0) currentLine = 1; 
                 else EndDialogue(); 
                 break;
 
-            case 1: // Второй выбор
+            case 1: // Р’С‚РѕСЂРѕР№ РІС‹Р±РѕСЂ
                 if (choiceIndex == 0) currentLine = 2; 
                 else EndDialogue(); 
                 break;
 
-            case 2: // Третий выбор
+            case 2: // РўСЂРµС‚РёР№ РІС‹Р±РѕСЂ
                 if (choiceIndex == 0) currentLine = 3; 
                 else EndDialogue(); 
                 break;
@@ -165,15 +165,15 @@ public class BagDialogueManager : MonoBehaviour
         isDialogueActive = false;
         dialoguePanel.SetActive(false);
         playerMove.canMove = true;
-        currentLine = 0; // Сброс диалога
+        currentLine = 0; // РЎР±СЂРѕСЃ РґРёР°Р»РѕРіР°
 
-        // Скрываем все кнопки выбора
+        // РЎРєСЂС‹РІР°РµРј РІСЃРµ РєРЅРѕРїРєРё РІС‹Р±РѕСЂР°
         foreach (var button in choiceButtons)
         {
             if (button != null)
             {
                 button.gameObject.SetActive(false);
-                button.onClick.RemoveAllListeners(); // Очищаем все подписки
+                button.onClick.RemoveAllListeners(); // РћС‡РёС‰Р°РµРј РІСЃРµ РїРѕРґРїРёСЃРєРё
             }
         }
 

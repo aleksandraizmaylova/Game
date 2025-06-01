@@ -173,6 +173,7 @@ public class HospitalDialogue : MonoBehaviour
         {
             dialoguePanel.SetActive(false);
         }
+        nameText.text = "";
         isDialogueActive = false;
         currentMessageIndex = 0;
     }

@@ -11,11 +11,11 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public Text dialogueText;
     public GameObject pressHint;
+    public GameObject teleporter;
     private Animator animator;
     private const float interactDistance = 2f;
     private bool isDialogueActive;
     private int value;
-    private bool IsEnd;
     private int currentLine;
 
     private List<string> npcLines = new()
@@ -137,8 +137,11 @@ public class DialogueManager : MonoBehaviour
                 choiceButtons[0].gameObject.SetActive(true);
                 choiceButtons[0].GetComponentInChildren<Text>().text = "Откуда я все это знаю??";
                 choiceButtons[0].onClick.RemoveAllListeners();
-                choiceButtons[0].onClick.AddListener(() => { choiceButtons[0].gameObject.SetActive(false); dialoguePanel.SetActive(false); });
-                fragment.SetActive(true);
+                choiceButtons[0].onClick.AddListener(() => { 
+                        choiceButtons[0].gameObject.SetActive(false); 
+                        dialoguePanel.SetActive(false); 
+                        fragment.SetActive(true);
+                        playerMove.canMove = true;});
             }
             else
             {
@@ -147,11 +150,8 @@ public class DialogueManager : MonoBehaviour
                 choiceButtons[0].gameObject.SetActive(true);
                 choiceButtons[0].GetComponentInChildren<Text>().text = "...";
                 choiceButtons[0].onClick.RemoveAllListeners();
-                choiceButtons[0].onClick.AddListener(() => { choiceButtons[0].gameObject.SetActive(false); dialoguePanel.SetActive(false); });
-                player.position = new Vector3(-28, -18, 0);
+                choiceButtons[0].onClick.AddListener(() => { choiceButtons[0].gameObject.SetActive(false); dialoguePanel.SetActive(false); teleporter.SetActive(true);});
             }
-            playerMove.canMove = true;
-            IsEnd = true;
         }
     }
 }
