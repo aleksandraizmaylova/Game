@@ -15,6 +15,7 @@ public class HospitalDialogue : MonoBehaviour
     [Header("Содержание диалога")]
     public DialogueMessage[] dialogueMessages;
     public GameObject bookObject; // Ссылка на уже существующую книгу на сцене
+    public GameObject TeleportEntrance;
 
     public GameObject pressHint;
     public KeyCode interactKey = KeyCode.E;
@@ -36,12 +37,18 @@ public class HospitalDialogue : MonoBehaviour
         {
             bookObject.SetActive(false);
         }
+
+        if (TeleportEntrance != null)
+        {
+            TeleportEntrance.SetActive(false);
+        }
     }
 
     void Update()
     {
         // Проверка на null для player
-        if (player == null) return;
+        if (player == null) 
+            return;
 
         bool isPlayerInRange = Vector3.Distance(transform.position, player.position) <= interactDistance;
 
@@ -106,6 +113,11 @@ public class HospitalDialogue : MonoBehaviour
             if (currentMessageIndex == 8 && bookObject != null)
             {
                 bookObject.SetActive(true);
+            }
+
+            if (currentMessageIndex == 30 && TeleportEntrance != null)
+            {
+                TeleportEntrance.SetActive(true);
             }
         }
         else

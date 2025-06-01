@@ -8,6 +8,14 @@ public class Fragment : MonoBehaviour
     public int fragmentNumber;
 
     private VideoPlayer videoCutscene;
+<<<<<<< Updated upstream
+=======
+    [Header("TP Settings")]
+    public GameObject destination;
+    public CinemachineCamera targetCam;
+    public CinemachineCamera currentCam;
+    public bool AllowMoving = true;
+>>>>>>> Stashed changes
 
     private void Start()
     {
@@ -28,6 +36,18 @@ public class Fragment : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    private void TeleportPlayer()
+    {
+        Player.Instance.transform.position = destination.transform.position;
+        if (!AllowMoving)
+            Player.Instance.canMove = false;
+        currentCam.enabled = false;
+        targetCam.enabled = true;
+    }
+
+>>>>>>> Stashed changes
     private void OnVideoFinished(VideoPlayer vp)
     {
         cutscene.SetActive(false);
