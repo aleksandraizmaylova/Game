@@ -13,6 +13,7 @@ public class ShadowArea : MonoBehaviour
     private Light2D playerLight;
     private Light2D globalLight;
     private Player player;
+    private bool spoken;
     
     private void Start()
     {
@@ -25,20 +26,25 @@ public class ShadowArea : MonoBehaviour
     {
         if (!player.canMove)
             return;
-        if (timer < 5)
+        if (timer is < 5 and > 3)
         {
             panel.SetActive(true);
             text.text = "Что-то мне нехорошо...";
             player.ChangeSpeed(2f);
             playerLight.pointLightOuterRadius = 1.5f;
         }
+        if (timer < 3 && !spoken)
+        {
+            panel.SetActive(false);
+            player.ChangeSpeed(1f);
+            playerLight.pointLightOuterRadius = 1.1f;
+            spoken = true;
+        }
         if (timer > 0)
             timer -= Time.deltaTime;
         else
         {
-            panel.SetActive(false);
             teleporter.SetActive(true);
-            player.ChangeSpeed(Constants.NormalSpeed);
         }
     }
 

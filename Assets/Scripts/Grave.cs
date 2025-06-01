@@ -7,22 +7,19 @@ public class Grave : MonoBehaviour
     public GameObject panel;
     public Text text;
     public string[] lines;
-    public GameObject fragment;
-    public GameObject grave;
-    
+    public Animator animator;
     
     private Player player;
     private int lineCounter;
     private bool isMonologueActive;
     private bool isPlayerNear;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         player = Player.Instance;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && isPlayerNear)
@@ -47,8 +44,7 @@ public class Grave : MonoBehaviour
             panel.SetActive(false);
             isMonologueActive = false;
             player.canMove = true;
-            fragment.SetActive(true);
-            grave.SetActive(false);
+            animator.SetTrigger("Break");
         }
     }
 
