@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2044357193518767926}
   - component: {fileID: 8531282639206719691}
   m_Layer: 0
-  m_Name: New Palette
+  m_Name: DP3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
