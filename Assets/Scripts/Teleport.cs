@@ -15,6 +15,7 @@ public class Teleporter : MonoBehaviour
     [Header("Teleport Settings")]
     [SerializeField] private CinemachineCamera targetVCam;
 
+    [SerializeField] private bool allowMoving = true;
 
     private bool playerInRange = false;
     private bool canTeleport = true;
@@ -77,6 +78,8 @@ public class Teleporter : MonoBehaviour
 
         // Переместим игрока
         player.transform.position = destination.position;
+        if (!allowMoving)
+            player.GetComponent<Player>().canMove = false;
 
         // Отключим все другие камеры
         foreach (var vcam in FindObjectsOfType<CinemachineCamera>())
