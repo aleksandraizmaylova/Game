@@ -48,7 +48,7 @@ public class Phone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            player.canMove = true;
+            //player.canMove = true;
             newCanvas.SetActive(false);
             oldCanvas.SetActive(true);
         }
@@ -73,6 +73,7 @@ public class Phone : MonoBehaviour
             closeUpCamera.enabled = false;
             hospitalCamera.enabled = true;
             player.transform.position = hospitalTeleport.transform.position;
+            player.canMove = false;
         }
     }
 
