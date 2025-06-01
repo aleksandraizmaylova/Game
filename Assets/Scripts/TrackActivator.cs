@@ -16,6 +16,6 @@ public class TrackActivator : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             foreach (var track in Tracks)
-                Destroy(track);
+                track.gameObject.SetActive(false);
     }
 }
