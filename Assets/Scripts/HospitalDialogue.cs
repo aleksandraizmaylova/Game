@@ -2,7 +2,9 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HospitalDialogue : MonoBehaviour
@@ -26,6 +28,12 @@ public class HospitalDialogue : MonoBehaviour
     public KeyCode interactKey = KeyCode.E;
     public bool fourthPhase;
 
+    [Header("Cutscene settings")]
+    public GameObject goodEnd;
+    public GameObject badEnd;
+    private GameObject cutscene;
+    private VideoPlayer videoCutscene;
+
     private int currentMessageIndex = 0;
     private bool isDialogueActive = false;
     private Light2D light;
@@ -40,6 +48,11 @@ public class HospitalDialogue : MonoBehaviour
     void Start()
     {
         light = GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>();
+        cutscene = Player.Instance.GetComponent<Inventory>().mirror.full ? goodEnd : badEnd;
+        videoCutscene = cutscene.GetComponent<VideoPlayer>();
+        videoCutscene.loopPointReached += OnVideoFinished;
+        videoCutscene.isLooping = false;
+        
         if (bookObject != null)
         {
             bookObject.SetActive(false);
@@ -189,6 +202,16 @@ public class HospitalDialogue : MonoBehaviour
             light.color = Color.white;
             nameText.color = Color.black;
             //сюда запихать включение катсцены
+            
+            cutscene.SetActive(true);
+            MusicManager.Instance.StopMusic();
+            videoCutscene.Play();
         }
+    }
+    
+    private void OnVideoFinished(VideoPlayer vp)
+    {
+        cutscene.SetActive(false);
+        SceneManager.LoadScene("MainMenuScene");
     }
 }
