@@ -3355,7 +3355,6 @@ GameObject:
   - component: {fileID: 315583202}
   - component: {fileID: 315583203}
   - component: {fileID: 315583204}
-  - component: {fileID: 315583207}
   - component: {fileID: 315583205}
   - component: {fileID: 315583206}
   m_Layer: 0
@@ -3527,25 +3526,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 10, y: 6}
   m_EdgeRadius: 0
---- !u!114 &315583207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 315583201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff922f746c3a1aa43b78ab1429f8b0a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 989465063}
-  teleportCooldown: 0
-  activationKey: 27
-  isConditional: 0
-  requiredKeyName: 
-  targetVCam: {fileID: 1649662226}
-  allowMoving: 1
 --- !u!4 &324297538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
@@ -7056,7 +7036,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 134.33563, y: -55.394337, z: -10.002415}
+  m_LocalPosition: {x: 134.30177, y: -55.388794, z: -10.002415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9339,7 +9319,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 702724974}
-  - component: {fileID: 702724975}
   m_Layer: 0
   m_Name: Teleport
   m_TagString: Untagged
@@ -9356,31 +9335,12 @@ Transform:
   m_GameObject: {fileID: 702724973}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.029999, y: 35.27, z: -1.5831518}
+  m_LocalPosition: {x: -12.28, y: 34.82, z: -1.5831518}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 538062788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &702724975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702724973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff922f746c3a1aa43b78ab1429f8b0a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 989465063}
-  teleportCooldown: 0
-  activationKey: 27
-  isConditional: 0
-  requiredKeyName: 
-  targetVCam: {fileID: 1649662226}
-  allowMoving: 1
 --- !u!1 &710314906
 GameObject:
   m_ObjectHideFlags: 0
