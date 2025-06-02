@@ -38,10 +38,6 @@ public class PauseMenu : MonoBehaviour
 		
 		leaveButton.onClick.AddListener(LeftAnyway);
 		stayButton.onClick.AddListener(Stay);
-
-		// background.SetActive(false);
-		// menuObjects.SetActive(false);
-		// warningPanel.SetActive(false);
 	}
 	
 	void Update()
