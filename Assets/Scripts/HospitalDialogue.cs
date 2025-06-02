@@ -48,25 +48,6 @@ public class HospitalDialogue : MonoBehaviour
     void Start()
     {
         light = GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>();
-        // cutscene = Player.Instance.GetComponent<Inventory>().mirror.full ? goodEnd : badEnd;
-        if (fourthPhase)
-        {
-            if (Player.Instance.GetComponent<Inventory>().mirror.full)
-            {
-                cutscene = goodEnd;
-                Debug.Log("загрузилась хорошая концовка");
-            }
-            else
-            {
-                cutscene = badEnd;
-                Debug.Log("загрузилась плохая концовка");
-            }
-
-            videoCutscene = cutscene.GetComponent<VideoPlayer>();
-            videoCutscene.loopPointReached += OnVideoFinished;
-            videoCutscene.isLooping = false;
-        }
-        
         if (bookObject != null)
         {
             bookObject.SetActive(false);
@@ -227,5 +208,27 @@ public class HospitalDialogue : MonoBehaviour
     {
         cutscene.SetActive(false);
         SceneManager.LoadScene("MainMenuScene");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && fourthPhase)
+        {
+            // cutscene = Player.Instance.GetComponent<Inventory>().mirror.full ? goodEnd : badEnd;
+            if (Player.Instance.GetComponent<Inventory>().mirror.full)
+            {
+                cutscene = goodEnd;
+                Debug.Log("загрузилась хорошая концовка");
+            }
+            else
+            {
+                cutscene = badEnd;
+                Debug.Log("загрузилась плохая концовка");
+            }
+
+            videoCutscene = cutscene.GetComponent<VideoPlayer>();
+            videoCutscene.loopPointReached += OnVideoFinished;
+            videoCutscene.isLooping = false;
+        }
     }
 }
