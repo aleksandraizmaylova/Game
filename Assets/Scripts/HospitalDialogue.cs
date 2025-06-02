@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
@@ -23,6 +24,7 @@ public class HospitalDialogue : MonoBehaviour
 
     public GameObject pressHint;
     public KeyCode interactKey = KeyCode.E;
+    public bool fourthPhase;
 
     private int currentMessageIndex = 0;
     private bool isDialogueActive = false;
@@ -124,6 +126,12 @@ public class HospitalDialogue : MonoBehaviour
             {
                 TeleportEntrance.SetActive(true);
             }
+
+            if (fourthPhase && currentMessageIndex == 10)
+            {
+                GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>().enabled = false;
+                nameText.color = Color.gray;
+            }
         }
         else
         {
@@ -171,13 +179,14 @@ public class HospitalDialogue : MonoBehaviour
         {
             dialoguePanel.SetActive(false);
         }
-
-        if (nameText != null)
-        {
-            nameText.text = "";
-        }
-
+        nameText.text = "";
         isDialogueActive = false;
         currentMessageIndex = 0;
+        if (fourthPhase)
+        {
+            GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>().enabled = true;
+            nameText.color = Color.black;
+            //сюда запихать включение катсцены
+        }
     }
 }

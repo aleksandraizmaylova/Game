@@ -1115,6 +1115,98 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2012501384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &141691285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 141691286}
+  - component: {fileID: 141691288}
+  - component: {fileID: 141691287}
+  m_Layer: 0
+  m_Name: slower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &141691286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141691285}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.25, y: -0.36, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 597188381}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &141691287
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141691285}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.070806414, y: 0.39905548}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.8624763, y: 2.9566598}
+  m_EdgeRadius: 0
+--- !u!114 &141691288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141691285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227038749a2854a6d949ca94c60af8ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
 --- !u!1 &153211685
 GameObject:
   m_ObjectHideFlags: 0
@@ -2476,6 +2568,7 @@ MonoBehaviour:
   - {fileID: 1091621845}
   dialoguePanel: {fileID: 1382012121}
   dialogueText: {fileID: 1919656947}
+  nameText: {fileID: 1230590337}
   pressHint: {fileID: 1846369969}
   nurse: {fileID: 1223642870}
   player: {fileID: 324297538}
@@ -7174,7 +7267,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 3.25
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7199,7 +7292,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 134.01266, y: -55.388794, z: -10.002415}
+  m_LocalPosition: {x: 88.50144, y: -33.86419, z: -10.002415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8152,6 +8245,7 @@ Transform:
   - {fileID: 530544869}
   - {fileID: 815447157}
   - {fileID: 724248366}
+  - {fileID: 141691286}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &603782709
@@ -9122,13 +9216,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff922f746c3a1aa43b78ab1429f8b0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {fileID: 119614678}
+  destination: {fileID: 530544869}
   teleportCooldown: 0
   activationKey: 0
   isConditional: 0
   requiredKeyName: 
   nurse: {fileID: 0}
-  targetVCam: {fileID: 895593352}
+  targetVCam: {fileID: 724248369}
   allowMoving: 1
 --- !u!58 &701480348
 CircleCollider2D:
@@ -10453,7 +10547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &817065271
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12397,6 +12491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 324297538}
+  playerMove: {fileID: 0}
   interactDistance: 3
   dialoguePanel: {fileID: 1382012121}
   nameText: {fileID: 1230590337}
@@ -12517,6 +12612,7 @@ MonoBehaviour:
   TeleportEntrance: {fileID: 0}
   pressHint: {fileID: 1846369969}
   interactKey: 101
+  fourthPhase: 0
 --- !u!212 &915848600
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12753,24 +12849,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 324297538}
+  playerMove: {fileID: 0}
   interactDistance: 3
   dialoguePanel: {fileID: 1382012121}
   nameText: {fileID: 1230590337}
   messageText: {fileID: 1919656947}
   dialogueMessages:
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u201C\u042F \u0432\u043D\u043E\u0432\u044C \u0432\u0438\u0436\u0443
       \u0437\u043D\u0430\u043A\u043E\u043C\u044B\u0435 \u0441\u0442\u0435\u043D\u044B
       \u043F\u0430\u043B\u0430\u0442\u044B. \u042F \u0432\u0438\u0436\u0443 \u0442\u0430\u043A\u0438\u0435
       \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0435 \u0441\u043D\u044B,"
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: " \u043D\u043E \u0431\u043E\u043B\u044C\u043D\u0438\u0446\u0430, \u043F\u043E\u0445\u043E\u0436\u0435,
       \u0432\u0441\u0451-\u0442\u0430\u043A\u0438 \u043C\u043D\u0435 \u043D\u0435
       \u043F\u0440\u0438\u0441\u043D\u0438\u043B\u0430\u0441\u044C.\u201D"
   - speakerName: "\u041C\u0430\u043C\u0430"
     message: "\u041E, \u0441\u044B\u043D\u043E\u043A, \u0442\u044B \u043F\u0440\u043E\u0441\u043D\u0443\u043B\u0441\u044F
       \u041A\u0430\u043A \u0442\u044B \u0441\u0435\u0431\u044F \u0447\u0443\u0432\u0441\u0442\u0432\u0443\u0435\u0448\u044C?"
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u041B\u0443\u0447\u0448\u0435, \u0447\u0435\u043C \u0432 \u043F\u0440\u043E\u0448\u043B\u044B\u0439
       \u0440\u0430\u0437... \u0410 \u0447\u0442\u043E \u044D\u0442\u043E \u0443 \u0442\u0435\u0431\u044F
       \u0432 \u0440\u0443\u043A\u0430\u0445?"
@@ -12782,14 +12879,14 @@ MonoBehaviour:
     message: " \u041E\u043D\u0438 \u0442\u043E\u0436\u0435 \u043E\u0447\u0435\u043D\u044C
       \u0432\u043E\u043B\u043D\u043E\u0432\u0430\u043B\u0438\u0441\u044C \u0437\u0430
       \u0442\u0435\u0431\u044F... \u0412\u043E\u0442, \u0434\u0435\u0440\u0436\u0438."
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\"\u0421\u0440\u0435\u0434\u0438 \u043F\u0440\u043E\u0447\u0438\u0445
       \u0431\u0443\u043C\u0430\u0436\u0435\u043A \u044F \u0437\u0430\u043C\u0435\u0447\u0430\u044E
       \u0432\u044B\u0434\u0435\u043B\u044F\u044E\u0449\u0443\u044E\u0441\u044F, \u0441
       \u043D\u043E\u043C\u0435\u0440\u043E\u043C\""
   - speakerName: ...
     message: 844485555
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u0410 \u044D\u0442\u043E \u0447\u0442\u043E \u0442\u0430\u043A\u043E\u0435?"
   - speakerName: "\u041C\u0430\u043C\u0430"
     message: "\u0410\u0445, \u044D\u0442\u043E... \u042D\u0442\u043E \u0434\u0430\u043B\u0430
@@ -12798,16 +12895,16 @@ MonoBehaviour:
   - speakerName: "\u041C\u0430\u043C\u0430"
     message: "\u041E\u043D\u043E \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E
       \u0441\u044E\u0434\u0430 \u043F\u043E\u043F\u0430\u043B\u043E..."
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u201C\u041C\u0430\u043C\u0430 \u0445\u0440\u0430\u043D\u0438\u0442
       \u044D\u0442\u043E \u0434\u0430\u0436\u0435 \u0441\u043F\u0443\u0441\u0442\u044F
       \u0441\u0442\u043E\u043B\u044C\u043A\u043E \u043B\u0435\u0442 \u043F\u043E\u0441\u043B\u0435...\u201D"
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u201C\u042F \u043F\u0440\u0430\u043A\u0442\u0438\u0447\u0435\u0441\u043A\u0438
       \u043D\u0435 \u043F\u043E\u043C\u043D\u044E \u0431\u0430\u0431\u0443\u0448\u043A\u0443.
       \u042F \u043F\u0430\u0440\u0443 \u0440\u0430\u0437 \u0431\u044B\u0432\u0430\u043B
       \u0443 \u043D\u0435\u0451 \u0434\u043E\u043C\u0430."
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u041E\u0434\u043D\u0430\u0436\u0434\u044B \u044F \u043F\u0440\u0438\u0448\u0451\u043B
       \u0438\u0437 \u0448\u043A\u043E\u043B\u044B, \u0438 \u043C\u043D\u0435 \u0441\u043E\u043E\u0431\u0449\u0438\u043B\u0438
       \u043E \u0435\u0451 \u0441\u043C\u0435\u0440\u0442\u0438. \u042D\u0442\u043E
@@ -12819,10 +12916,10 @@ MonoBehaviour:
   - speakerName: "\u041C\u0430\u043C\u0430"
     message: "\u041A \u0442\u0435\u0431\u0435 \u0441\u043A\u043E\u0440\u043E \u0437\u0430\u0439\u0434\u0451\u0442
       \u043F\u0430\u043F\u0430. \u041E\u0442\u0434\u044B\u0445\u0430\u0439, \u043B\u0430\u0434\u043D\u043E?"
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u041A\u043E\u043D\u0435\u0447\u043D\u043E. \u0425\u043E\u0440\u043E\u0448\u0435\u0433\u043E
       \u0434\u043D\u044F \u043D\u0430 \u0440\u0430\u0431\u043E\u0442\u0435"
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u201C\u0418 \u0432\u0441\u043A\u043E\u0440\u0435 \u043C\u0435\u043D\u044F
       \u0432\u043D\u043E\u0432\u044C \u043E\u0434\u043E\u043B\u0435\u0432\u0430\u0435\u0442
       \u0441\u043E\u043D...\u201D"
@@ -12830,6 +12927,7 @@ MonoBehaviour:
   TeleportEntrance: {fileID: 0}
   pressHint: {fileID: 1846369969}
   interactKey: 101
+  fourthPhase: 0
 --- !u!212 &927564630
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18359,7 +18457,7 @@ Transform:
   m_GameObject: {fileID: 1206589715}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.99, y: -1.1, z: 0.04417448}
+  m_LocalPosition: {x: 2.97, y: -1.06, z: 0.04417448}
   m_LocalScale: {x: 1, y: 1, z: 0.86125225}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18482,6 +18580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 324297538}
+  playerMove: {fileID: 0}
   interactDistance: 3
   dialoguePanel: {fileID: 1382012121}
   nameText: {fileID: 1230590337}
@@ -18552,12 +18651,6 @@ MonoBehaviour:
       \u043E\u0442\u0431\u0438\u0432\u0430\u0442\u044C\u0441\u044F, \u043D\u043E
       \u0431\u0435\u0437\u0443\u0441\u043F\u0435\u0448\u043D\u043E.\" "
   - speakerName: ...
-    message: "\"\u041C\u0430\u043C\u0430 \u0445\u0432\u0430\u0442\u0430\u0435\u0442
-      \u043F\u043E\u0434\u0443\u0448\u043A\u0443 \u0438 \u043D\u0430\u0447\u0438\u043D\u0430\u0435\u0442
-      \u0434\u0443\u0448\u0438\u0442\u044C \u043C\u0435\u043D\u044F. \u042F \u043F\u044B\u0442\u0430\u044E\u0441\u044C
-      \u043E\u0442\u0431\u0438\u0432\u0430\u0442\u044C\u0441\u044F, \u043D\u043E
-      \u0431\u0435\u0437\u0443\u0441\u043F\u0435\u0448\u043D\u043E.\" "
-  - speakerName: ...
     message: "\"\u0417\u0432\u0443\u043A\u0438 \u043F\u043E\u0441\u0442\u0435\u043F\u0435\u043D\u043D\u043E
       \u0441\u0442\u0430\u043D\u043E\u0432\u044F\u0442\u0441\u044F \u0442\u0438\u0448\u0435.
       \u042F \u0442\u0435\u0440\u044F\u044E \u0441\u043E\u0437\u043D\u0430\u043D\u0438\u0435.\""
@@ -18565,6 +18658,7 @@ MonoBehaviour:
   TeleportEntrance: {fileID: 0}
   pressHint: {fileID: 1846369969}
   interactKey: 101
+  fourthPhase: 1
 --- !u!1 &1218690752
 GameObject:
   m_ObjectHideFlags: 0
@@ -18937,6 +19031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 324297538}
+  playerMove: {fileID: 0}
   interactDistance: 3
   dialoguePanel: {fileID: 1382012121}
   nameText: {fileID: 1230590337}
@@ -18945,17 +19040,17 @@ MonoBehaviour:
   - speakerName: "\u041C\u0435\u0434\u0441\u0435\u0441\u0442\u0440\u0430"
     message: " \u041D\u0430\u0447\u0430\u043B\u0441\u044F \u0441\u043E\u043D \u0447\u0430\u0441,
       \u0442\u044B \u043F\u043E\u0447\u0435\u043C\u0443 \u043D\u0435 \u0441\u043F\u0438\u0448\u044C? "
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u041D\u043E \u044F \u0442\u043E\u043B\u044C\u043A\u043E \u043D\u0435\u0434\u0430\u0432\u043D\u043E
       \u043F\u0440\u043E\u0441\u043D\u0443\u043B\u0441\u044F..."
   - speakerName: "\u041C\u0435\u0434\u0441\u0435\u0441\u0442\u0440\u0430"
     message: " \u0432 \u0441\u043E\u043D \u0447\u0430\u0441 \u0432\u0441\u0435\u043C
       \u043F\u0430\u0446\u0438\u0435\u043D\u0442\u0430\u043C \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u043E
       \u0441\u043F\u0430\u0442\u044C."
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\"\u041C\u043D\u0435 \u043F\u0440\u0438\u0448\u043B\u043E\u0441\u044C
       \u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u0432 \u043A\u0440\u043E\u0432\u0430\u0442\u044C."
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u0425\u043E\u0442\u044C \u044F \u0438 \u0434\u0443\u043C\u0430\u043B,
       \u0447\u0442\u043E \u0432\u044B\u0441\u043F\u0430\u043B\u0441\u044F, \u044F
       \u0441\u043D\u043E\u0432\u0430 \u043F\u043E\u0433\u0440\u0443\u0436\u0430\u044E\u0441\u044C
@@ -18964,6 +19059,7 @@ MonoBehaviour:
   TeleportEntrance: {fileID: 0}
   pressHint: {fileID: 1846369969}
   interactKey: 101
+  fourthPhase: 0
 --- !u!114 &1223642875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19026,9 +19122,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 219835943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -320, y: -101}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 105.899994, y: 133.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1230590337
@@ -19044,7 +19140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19053,10 +19149,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -47115,16 +47211,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 324297538}
+  playerMove: {fileID: 0}
   interactDistance: 3
   dialoguePanel: {fileID: 1382012121}
   nameText: {fileID: 1230590337}
   messageText: {fileID: 1919656947}
   dialogueMessages:
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\"\u042F \u0432\u0441\u0451 \u0435\u0449\u0451 \u0432 \u044D\u0442\u043E\u0439
       \u0431\u043E\u043B\u044C\u043D\u0438\u0446\u0435... \u041F\u043E\u0445\u043E\u0436\u0435,
       \u0441\u0435\u0439\u0447\u0430\u0441 \u043F\u043E\u043B\u0434\u0435\u043D\u044C. "
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u0420\u043E\u0434\u0438\u0442\u0435\u043B\u0438 \u0447\u0442\u043E-\u0442\u043E
       \u0431\u0443\u0440\u043D\u043E \u043E\u0431\u0441\u0443\u0436\u0434\u0430\u044E\u0442
       \u0432\u043E\u0437\u043B\u0435 \u043C\u043E\u0435\u0439 \u043A\u0440\u043E\u0432\u0430\u0442\u0438.\""
@@ -47133,7 +47230,7 @@ MonoBehaviour:
       \u0433\u0440\u043E\u043C\u043A\u043E \u0440\u0430\u0437\u0433\u043E\u0432\u0430\u0440\u0438\u0432\u0430\u043B\u0438
       \u0438 \u0440\u0430\u0437\u0431\u0443\u0434\u0438\u043B\u0438 \u0442\u0435\u0431\u044F...
       \u0418\u0437\u0432\u0438\u043D\u0438."
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: " \u0412\u0441\u0451 \u0432 \u043F\u043E\u0440\u044F\u0434\u043A\u0435,
       \u0432\u044B \u043D\u0435 \u0440\u0430\u0437\u0431\u0443\u0434\u0438\u043B\u0438
       \u043C\u0435\u043D\u044F. \u041E \u0447\u0451\u043C \u0432\u044B \u0440\u0430\u0437\u0433\u043E\u0432\u0430\u0440\u0438\u0432\u0430\u043B\u0438?"
@@ -47150,27 +47247,27 @@ MonoBehaviour:
       \u0432\u0441\u043F\u043E\u043C\u0438\u043D\u0430\u044E \u043E \u0441\u0435\u0433\u043E\u0434\u043D\u044F\u0448\u043D\u0435\u043C
       \u0441\u043D\u0435. \u041E \u0431\u0430\u0431\u0443\u0448\u043A\u0435, \u043E
       \u0442\u043E\u043C, \u043A\u0430\u043A \u043E\u043D\u0430...\" "
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: " \u041C\u0430\u043C, \u043F\u0430\u043F, \u0430 \u043A\u0430\u043A
       \u0443\u043C\u0435\u0440\u043B\u0430 \u0431\u0430\u0431\u0443\u0448\u043A\u0430?"
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u041E\u043D\u0430 \u0443\u043C\u0435\u0440\u043B\u0430 \u0443 \u0441\u0435\u0431\u044F
       \u0434\u043E\u043C\u0430 \u0433\u0434\u0435-\u0442\u043E \u0440\u0430\u043D\u043E
       \u0443\u0442\u0440\u043E\u043C, \u0438\u043B\u0438 \u0432\u0441\u0451 \u0436\u0435..."
   - speakerName: "\u041C\u0430\u043C\u0430"
     message: "\u0427\u0442\u043E \u0435\u0449\u0451 \u0437\u0430 \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0435
       \u0432\u043E\u043F\u0440\u043E\u0441\u044B?"
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: " \u041C\u043D\u0435 \u0441\u0435\u0433\u043E\u0434\u043D\u044F \u043F\u0440\u0438\u0441\u043D\u0438\u043B\u0441\u044F
       \u0441\u043E\u043D. \u042F \u0441\u043B\u044B\u0448\u0430\u043B, \u0447\u0442\u043E
       \u0442\u044B \u0441\u043F\u043E\u0440\u0438\u043B\u0430 \u0441 \u0431\u0430\u0431\u0443\u0448\u043A\u043E\u0439,
       \u0430 \u043F\u043E\u0442\u043E\u043C \u043E\u043D\u0430 \u0443\u043C\u0435\u0440\u043B\u0430..."
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u042D\u0442\u043E \u0431\u044B\u043B\u043E \u0443 \u043D\u0430\u0441
       \u0434\u043E\u043C\u0430 \u043F\u043E\u0437\u0434\u043D\u043E \u043D\u043E\u0447\u044C\u044E
       \u0438 \u0441\u043E\u0432\u0441\u0435\u043C \u043D\u0435 \u0432\u044F\u0436\u0435\u0442\u0441\u044F
       \u0441 \u0442\u0435\u043C, \u0447\u0442\u043E \u044F \u043F\u043E\u043C\u043D\u044E. "
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: " \u041D\u043E \u044D\u0442\u043E \u043A\u0430\u0436\u0435\u0442\u0441\u044F
       \u0442\u0430\u043A\u0438\u043C \u0440\u0435\u0430\u043B\u044C\u043D\u044B\u043C..."
   - speakerName: "\u041C\u0430\u043C\u0430"
@@ -47181,7 +47278,7 @@ MonoBehaviour:
   - speakerName: "\u041F\u0430\u043F\u0430"
     message: "\u0412\u0435\u0440\u043D\u043E. \u041B\u0443\u0447\u0448\u0435 \u043E\u0442\u0434\u043E\u0445\u043D\u0438,
       \u043D\u0435 \u0434\u0443\u043C\u0430\u0439 \u043E\u0431 \u044D\u0442\u043E\u043C. "
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u041D\u043E \u044F \u0443\u0432\u0435\u0440\u0435\u043D, \u0442\u0443\u0442
       \u0447\u0442\u043E-\u0442\u043E \u043D\u0435 \u0442\u0430\u043A... "
   - speakerName: "\u041F\u0430\u043F\u0430"
@@ -47196,17 +47293,18 @@ MonoBehaviour:
     message: "\u0410\u0433\u0430. \u041E\u0442\u0434\u044B\u0445\u0430\u0439. \u0422\u0435\u0431\u0435
       \u043D\u0443\u0436\u043D\u043E \u043D\u0430\u0431\u0438\u0440\u0430\u0442\u044C\u0441\u044F
       \u0441\u0438\u043B. "
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\"\u041C\u0430\u043C\u0430 \u0446\u0435\u043B\u0443\u0435\u0442 \u043C\u0435\u043D\u044F
       \u0432 \u043B\u043E\u0431, \u0438 \u0440\u043E\u0434\u0438\u0442\u0435\u043B\u0438
       \u0443\u0445\u043E\u0434\u044F\u0442.\""
-  - speakerName: "\u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0433\u0435\u0440\u043E\u0439"
+  - speakerName: "\u042F"
     message: "\u041A\u0430\u0436\u0435\u0442\u0441\u044F, \u043C\u0430\u043C\u0430
       \u0437\u0430\u0431\u044B\u043B\u0430 \u0441\u0443\u043C\u043A\u0443"
   bookObject: {fileID: 0}
   TeleportEntrance: {fileID: 0}
   pressHint: {fileID: 1846369969}
   interactKey: 101
+  fourthPhase: 0
 --- !u!70 &1756965720
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

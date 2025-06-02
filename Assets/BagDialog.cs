@@ -9,6 +9,7 @@ public class BagDialogueManager : MonoBehaviour
     public Button[] choiceButtons;
     public GameObject dialoguePanel;
     public Text dialogueText;
+    public Text nameText;
     public GameObject pressHint;
     [SerializeField] GameObject nurse;
 
@@ -177,6 +178,7 @@ public class BagDialogueManager : MonoBehaviour
             }
         }
 
+        nameText.text = "";
         enabled = false;
     }
 }

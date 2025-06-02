@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class DeactivateParents : MonoBehaviour
 {
-    [Header("Настройки")]
-    public float interactDistance = 3f; // Дистанция для взаимодействия
-    public KeyCode interactKey = KeyCode.E; // Клавиша активации
-    public int requiredPresses = 22; // Нужное количество нажатий
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
+    public float interactDistance = 3f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public KeyCode interactKey = KeyCode.E; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public int requiredPresses = 22; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-    [Header("Ссылки")]
-    public Transform player; // Перетащи сюда игрока
-    public GameObject Mum;   // Перетащи объект "Mom"
-    public GameObject Dad;   // Перетащи объект "Dad"
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅ")]
+    public Transform player; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    public GameObject Mum;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "Mom"
+    public GameObject Dad;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "Dad"
 
     private int ePressCount = 0;
     private bool isInRange = false;
@@ -20,19 +20,19 @@ public class DeactivateParents : MonoBehaviour
     {
         if (player == null || Mum == null || Dad == null)
         {
-            Debug.LogError("Не назначены player, mom или dad!");
+            Debug.LogError("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ player, mom пїЅпїЅпїЅ dad!");
             return;
         }
 
-        // Проверяем дистанцию до игрока
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         float distance = Vector3.Distance(transform.position, player.position);
         isInRange = distance <= interactDistance;
 
-        // Если игрок в радиусе и нажал E
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ E
         if (isInRange && Input.GetKeyDown(interactKey))
         {
             ePressCount++;
-            Debug.Log($"Нажатий: {ePressCount}/{requiredPresses}");
+            Debug.Log($"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: {ePressCount}/{requiredPresses}");
 
             if (ePressCount >= requiredPresses)
             {
@@ -45,11 +45,12 @@ public class DeactivateParents : MonoBehaviour
     {
         if (Mum != null) Mum.SetActive(false);
         if (Dad != null) Dad.SetActive(false);
-        Debug.Log("Родители деактивированы!");
-        enabled = false; // Отключаем скрипт
+        Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
+        enabled = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+        Player.Instance.canMove = true;
     }
 
-    // Опционально: визуализация радиуса в редакторе
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
