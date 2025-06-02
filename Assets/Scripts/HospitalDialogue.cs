@@ -1,11 +1,8 @@
-using System;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HospitalDialogue : MonoBehaviour
 {
