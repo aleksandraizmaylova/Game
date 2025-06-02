@@ -58,7 +58,8 @@ public class HospitalTeleporter : MonoBehaviour
 
         // Перемещаем игрока
         player.transform.position = destination.position;
-        player.GetComponent<Player>().canMove = true;
+        Player.Instance.canMove = true;
+        Player.Instance.ChangeSpeed(Constants.NormalSpeed);
 
         // Отключаем все другие камеры Cinemachine
         foreach (var vcam in FindObjectsOfType<CinemachineCamera>())
