@@ -28,6 +28,7 @@ public class HospitalDialogue : MonoBehaviour
 
     private int currentMessageIndex = 0;
     private bool isDialogueActive = false;
+    private Light2D light;
 
     [System.Serializable]
     public class DialogueMessage
@@ -38,6 +39,7 @@ public class HospitalDialogue : MonoBehaviour
 
     void Start()
     {
+        light = GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>();
         if (bookObject != null)
         {
             bookObject.SetActive(false);
@@ -129,7 +131,7 @@ public class HospitalDialogue : MonoBehaviour
 
             if (fourthPhase && currentMessageIndex == 10)
             {
-                GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>().enabled = false;
+                light.color = Color.black;
                 nameText.color = Color.gray;
             }
         }
@@ -184,7 +186,7 @@ public class HospitalDialogue : MonoBehaviour
         currentMessageIndex = 0;
         if (fourthPhase)
         {
-            GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>().enabled = true;
+            light.color = Color.white;
             nameText.color = Color.black;
             //сюда запихать включение катсцены
         }

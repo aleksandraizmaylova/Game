@@ -29,6 +29,7 @@ public class Phone : MonoBehaviour
     public AudioClip ringtoneSound;
 
     private int result;
+    private bool ok;
     private Player player;
     private Vector2 position;
     private AudioSource audioSource;
@@ -55,7 +56,7 @@ public class Phone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //player.canMove = true;
+            player.canMove = ok;
             newCanvas.SetActive(false);
             oldCanvas.SetActive(true);
         }
@@ -67,6 +68,7 @@ public class Phone : MonoBehaviour
         if (result == phoneNumber)
         {
             fragment.SetActive(true);
+            ok = true;
             phone.SetActive(false);
             result = -1;
             closeUpCamera.enabled = false;
