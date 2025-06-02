@@ -6,6 +6,7 @@ using UnityEngine.Video;
 public class PauseMenu : MonoBehaviour
 {
 	[SerializeField] private GameObject allCanvas;
+	[SerializeField] private GameObject background;
 	
 	[SerializeField] private GameObject menuObjects;
 	[SerializeField] private Button resumeButton;
@@ -23,6 +24,7 @@ public class PauseMenu : MonoBehaviour
 
 	private void Awake()
 	{
+		background.SetActive(false);
 		menuObjects.SetActive(false);
 		warningPanel.SetActive(false);
 		
@@ -36,15 +38,19 @@ public class PauseMenu : MonoBehaviour
 		
 		leaveButton.onClick.AddListener(LeftAnyway);
 		stayButton.onClick.AddListener(Stay);
-		
-		menuObjects.SetActive(false);
-		warningPanel.SetActive(false);
+
+		// background.SetActive(false);
+		// menuObjects.SetActive(false);
+		// warningPanel.SetActive(false);
 	}
 	
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
+			if (warningPanel.activeSelf)
+				return;
+			
 			if (isPaused)
 				ResumeGame();
 			else
@@ -52,9 +58,11 @@ public class PauseMenu : MonoBehaviour
 		}
 	}
 
-	public void ResumeGame()
+	private void ResumeGame()
 	{
+		background.SetActive(false);
 		menuObjects.SetActive(false);
+		
 		Time.timeScale = 1f;
 		isPaused = false;
 		
@@ -65,8 +73,9 @@ public class PauseMenu : MonoBehaviour
 		}
 	}
 
-	void PauseGame()
+	private void PauseGame()
 	{
+		background.SetActive(true);
 		menuObjects.SetActive(true);
 		Time.timeScale = 0f;
 		isPaused = true;
@@ -78,13 +87,14 @@ public class PauseMenu : MonoBehaviour
 		}
 	}
 	
-	public void LoadMainMenu()
+	private void LoadMainMenu()
 	{
 		warningPanel.SetActive(true);
 	}
 
 	private void LeftAnyway()
 	{
+		background.SetActive(false);
 		menuObjects.SetActive(false);
 		warningPanel.SetActive(false);
 		
