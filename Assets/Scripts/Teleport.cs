@@ -18,12 +18,20 @@ public class Teleporter : MonoBehaviour
 
     [SerializeField] private bool allowMoving = true;
 
+    [Header("Sound Settings")]
+    [SerializeField] private AudioClip teleportSound;
+
     private bool playerInRange = false;
     private bool canTeleport = true;
     private Inventory playerInventory;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        if (!TryGetComponent<AudioSource>(out audioSource))
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
         if (isConditional)
             playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
 
@@ -79,6 +87,8 @@ public class Teleporter : MonoBehaviour
             return;
         }
 
+        PlayTeleportSound();
+
         // Переместим игрока
         player.transform.position = destination.position;
         if (!allowMoving)
@@ -101,6 +111,13 @@ public class Teleporter : MonoBehaviour
         }
     }
 
+    private void PlayTeleportSound()
+    {
+        if (teleportSound != null)
+        {
+            AudioSource.PlayClipAtPoint(teleportSound, transform.position);
+        }
+    }
     private void ResetTeleport() => canTeleport = true;
 
     private void OnDrawGizmos()

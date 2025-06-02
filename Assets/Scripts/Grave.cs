@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class Grave : MonoBehaviour
 {
+    [Header("Sound Settings")]
+    public AudioClip breakSound;
+
     public GameObject panel;
     public Text text;
     public string[] lines;
@@ -13,11 +16,13 @@ public class Grave : MonoBehaviour
     private int lineCounter;
     private bool isMonologueActive;
     private bool isPlayerNear;
+    private AudioSource audioSource;
 
 
     void Start()
     {
         player = Player.Instance;
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -45,6 +50,14 @@ public class Grave : MonoBehaviour
             isMonologueActive = false;
             player.canMove = true;
             animator.SetTrigger("Break");
+            PlayBreakSound();
+        }
+    }
+    private void PlayBreakSound()
+    {
+        if (breakSound != null)
+        {
+            AudioSource.PlayClipAtPoint(breakSound, transform.position);
         }
     }
 

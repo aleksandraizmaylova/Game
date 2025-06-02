@@ -23,15 +23,22 @@ public class Phone : MonoBehaviour
     public GameObject phone;
     public CinemachineCamera hospitalCamera;
     public GameObject hospitalTeleport;
-    
+
+    [Header("Sound Settings")]
+    public AudioClip buttonPressSound;
+    public AudioClip ringtoneSound;
+
     private int result;
     private Player player;
     private Vector2 position;
+    private AudioSource audioSource;
 
     private void Start()
     {
         player = Player.Instance;
         position= phone.transform.position + Vector3.down;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -79,6 +86,7 @@ public class Phone : MonoBehaviour
 
     public void Push(int i)
     {
+        PlayButtonSound();
         result = result * 10 + i;
         Debug.Log($"result: {result}");
         
@@ -87,11 +95,27 @@ public class Phone : MonoBehaviour
             animator.SetTrigger($"{i}");
             dialoguePanel.SetActive(true);
             dialogueText.text = "Гудки...";
+            PlayRingtone();
             return;
         }
         
         animator.SetTrigger($"{i}");
         dialoguePanel.SetActive(true);
         dialogueText.text = $"{i}...";
+    }
+    private void PlayButtonSound()
+    {
+        if (buttonPressSound != null)
+        {
+            audioSource.PlayOneShot(buttonPressSound);
+        }
+    }
+
+    private void PlayRingtone()
+    {
+        if (ringtoneSound != null)
+        {
+            audioSource.PlayOneShot(ringtoneSound);
+        }
     }
 }

@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PickUp : MonoBehaviour
 {
     private Inventory Inventory;
     private BackPack backPack;
     public GameObject slotButton;
+    public AudioClip pickupSound;
     public bool isPicked = false;
     private bool isPlayerNear;
 
@@ -28,7 +30,7 @@ public class PickUp : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Q) && isPlayerNear)
+        if (Input.GetKey(KeyCode.Q) && isPlayerNear && !isPicked)
             PickObject();
     }
 
@@ -40,6 +42,8 @@ public class PickUp : MonoBehaviour
                 continue;
             Inventory.isSlotFull[i] = true;
             Instantiate(slotButton, backPack.Slots[i].transform);
+            if (pickupSound != null)
+                AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             Destroy(gameObject);
             isPicked = true;
             break;
