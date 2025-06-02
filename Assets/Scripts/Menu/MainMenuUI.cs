@@ -4,30 +4,26 @@ using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour
 {
-	[SerializeField] private Button newGameButton;
+	// [SerializeField] private Button newGameButton;
 	[SerializeField] private Button quitButton;
 
-	[SerializeField] private string gameSceneName;
+	// [SerializeField] private string gameSceneName;
 
 	void Start()
 	{
-		newGameButton.onClick.AddListener(OnNewGameClicked);
+		// newGameButton.onClick.AddListener(OnNewGameClicked);
 		quitButton.onClick.AddListener(OnQuitClicked);
 	}
 
-	void OnNewGameClicked()
-	{
-		SceneManager.LoadScene(gameSceneName);
-	}
+	// void OnNewGameClicked()
+	// {
+	// 	SceneManager.LoadScene(gameSceneName);
+	// }
 
 	void OnQuitClicked()
 	{
 		Application.Quit();
 		
-		Debug.Log("Выход...");
-		
-// #if UNITY_EDITOR
-// 		UnityEditor.EditorApplication.isPlaying = false;
-// #endif
+		Debug.Log("Quit...");
 	}
 }
