@@ -5,10 +5,15 @@ using UnityEngine.Video;
 
 public class PauseMenu : MonoBehaviour
 {
-	[SerializeField] private GameObject pauseMenuUI;
-
+	[SerializeField] private GameObject allCanvas;
+	
+	[SerializeField] private GameObject menuObjects;
 	[SerializeField] private Button resumeButton;
 	[SerializeField] private Button toMainMenuButton;
+	
+	[SerializeField] private GameObject warningPanel;
+	[SerializeField] private Button leaveButton;
+	[SerializeField] private Button stayButton;
 	
 	[SerializeField] private VideoPlayer[] videoPlayers;
 	
@@ -16,10 +21,24 @@ public class PauseMenu : MonoBehaviour
 	
 	private bool isPaused = false;
 
+	private void Awake()
+	{
+		menuObjects.SetActive(false);
+		warningPanel.SetActive(false);
+		
+		allCanvas.SetActive(true);
+	}
+	
 	private void Start()
 	{
 		resumeButton.onClick.AddListener(ResumeGame);
 		toMainMenuButton.onClick.AddListener(LoadMainMenu);
+		
+		leaveButton.onClick.AddListener(LeftAnyway);
+		stayButton.onClick.AddListener(Stay);
+		
+		menuObjects.SetActive(false);
+		warningPanel.SetActive(false);
 	}
 	
 	void Update()
@@ -35,7 +54,7 @@ public class PauseMenu : MonoBehaviour
 
 	public void ResumeGame()
 	{
-		pauseMenuUI.SetActive(false);
+		menuObjects.SetActive(false);
 		Time.timeScale = 1f;
 		isPaused = false;
 		
@@ -48,7 +67,7 @@ public class PauseMenu : MonoBehaviour
 
 	void PauseGame()
 	{
-		pauseMenuUI.SetActive(true);
+		menuObjects.SetActive(true);
 		Time.timeScale = 0f;
 		isPaused = true;
 		
@@ -58,25 +77,26 @@ public class PauseMenu : MonoBehaviour
 				vp.Pause();
 		}
 	}
-
-	// public void LoadMainMenu()
-	// {
-	// 	Time.timeScale = 1f;
-	// 	SceneManager.LoadScene(sceneToLoad);
-	// }
+	
 	public void LoadMainMenu()
 	{
-		Time.timeScale = 1f;
-
-		if (Application.CanStreamedLevelBeLoaded(sceneToLoad))
-		{
-			Debug.Log($"Загрузка сцены: {sceneToLoad}");
-			SceneManager.LoadScene(sceneToLoad);
-		}
-		else
-		{
-			Debug.LogError($"Сцена '{sceneToLoad}' не может быть загружена. Убедись, что она добавлена в Build Settings.");
-		}
+		warningPanel.SetActive(true);
 	}
 
+	private void LeftAnyway()
+	{
+		menuObjects.SetActive(false);
+		warningPanel.SetActive(false);
+		
+		allCanvas.SetActive(false);
+		
+		Time.timeScale = 1f;
+		
+		SceneManager.LoadScene(sceneToLoad);
+	}
+
+	private void Stay()
+	{
+		warningPanel.SetActive(false);
+	}
 }
