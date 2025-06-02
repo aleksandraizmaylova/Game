@@ -9,17 +9,17 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HospitalDialogue : MonoBehaviour
 {
-    [Header("Настройки игрока")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ")]
     public Transform player;
     public Player playerMove;
     public float interactDistance = 3f;
 
-    [Header("Элементы интерфейса")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     public GameObject dialoguePanel;
     public Text nameText;
     public Text messageText;
 
-    [Header("Содержание диалога")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     public DialogueMessage[] dialogueMessages;
     public GameObject bookObject;
     public GameObject TeleportEntrance;
@@ -48,10 +48,24 @@ public class HospitalDialogue : MonoBehaviour
     void Start()
     {
         light = GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>();
-        cutscene = Player.Instance.GetComponent<Inventory>().mirror.full ? goodEnd : badEnd;
-        videoCutscene = cutscene.GetComponent<VideoPlayer>();
-        videoCutscene.loopPointReached += OnVideoFinished;
-        videoCutscene.isLooping = false;
+        // cutscene = Player.Instance.GetComponent<Inventory>().mirror.full ? goodEnd : badEnd;
+        if (fourthPhase)
+        {
+            if (Player.Instance.GetComponent<Inventory>().mirror.full)
+            {
+                cutscene = goodEnd;
+                Debug.Log("Р·Р°РіСЂСѓР·РёР»Р°СЃСЊ С…РѕСЂРѕС€Р°СЏ РєРѕРЅС†РѕРІРєР°");
+            }
+            else
+            {
+                cutscene = badEnd;
+                Debug.Log("Р·Р°РіСЂСѓР·РёР»Р°СЃСЊ РїР»РѕС…Р°СЏ РєРѕРЅС†РѕРІРєР°");
+            }
+
+            videoCutscene = cutscene.GetComponent<VideoPlayer>();
+            videoCutscene.loopPointReached += OnVideoFinished;
+            videoCutscene.isLooping = false;
+        }
         
         if (bookObject != null)
         {
@@ -99,7 +113,7 @@ public class HospitalDialogue : MonoBehaviour
     {
         if (dialogueMessages == null || dialogueMessages.Length == 0)
         {
-            Debug.LogError("Нет сообщений для диалога!");
+            Debug.LogError("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
@@ -111,7 +125,7 @@ public class HospitalDialogue : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Не назначена панель диалога!");
+            Debug.LogError("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             return;
         }
 
@@ -158,7 +172,7 @@ public class HospitalDialogue : MonoBehaviour
     {
         if (currentMessageIndex < 0 || currentMessageIndex >= dialogueMessages.Length)
         {
-            Debug.LogError($"Неверный индекс сообщения: {currentMessageIndex}");
+            Debug.LogError($"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: {currentMessageIndex}");
             return;
         }
 
@@ -170,7 +184,7 @@ public class HospitalDialogue : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Не назначено поле для имени!");
+            Debug.LogError("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!");
         }
 
         if (messageText != null)
@@ -179,7 +193,7 @@ public class HospitalDialogue : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Не назначено поле для сообщения!");
+            Debug.LogError("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
         }
     }
 
@@ -201,7 +215,7 @@ public class HospitalDialogue : MonoBehaviour
         {
             light.color = Color.white;
             nameText.color = Color.black;
-            //сюда запихать включение катсцены
+            //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             
             cutscene.SetActive(true);
             MusicManager.Instance.StopMusic();

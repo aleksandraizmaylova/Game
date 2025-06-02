@@ -17,7 +17,13 @@ public class Mirror : MonoBehaviour
     {
         fragments[fragmentNumber].SetActive(true);
         counter++;
+
+        Debug.Log($"counter = {counter}, full = {full}");
+        
         if (counter == 4)
+        {
+            Debug.Log("зеркало заполнено");
             full = true;
+        }
     }
 }
