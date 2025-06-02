@@ -1570,6 +1570,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &207220147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2541,6 +2542,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &255022818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2886,6 +2888,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &263556972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3421,6 +3424,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 1649662226}
+  allowMoving: 1
 --- !u!4 &324297538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7768490213325373810, guid: 9568868fc5f0942d7acf81a7f41fc281, type: 3}
@@ -3481,6 +3485,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &325609242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3963,6 +3968,7 @@ MonoBehaviour:
   destination: {fileID: 98394156}
   targetCam: {fileID: 2028689492}
   currentCam: {fileID: 895593352}
+  AllowMoving: 1
 --- !u!70 &332742672
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4643,6 +4649,7 @@ MonoBehaviour:
   destination: {fileID: 530544868}
   targetCam: {fileID: 724248369}
   currentCam: {fileID: 1374868506}
+  AllowMoving: 1
 --- !u!70 &381541035
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4991,6 +4998,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &462497079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6399,7 +6407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &492529154
 Transform:
   m_ObjectHideFlags: 0
@@ -6488,6 +6496,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 1784322156}
+  allowMoving: 1
 --- !u!58 &492529157
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6790,7 +6799,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 133.74449, y: -55.388794, z: -10.002415}
+  m_LocalPosition: {x: 134.33563, y: -55.394337, z: -10.002415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8715,6 +8724,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 895593352}
+  allowMoving: 1
 --- !u!58 &701480348
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8816,6 +8826,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 1649662226}
+  allowMoving: 1
 --- !u!1 &713531968 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2282594838483341698, guid: e17b0664f2b99451cb7272b40b1a199d, type: 3}
@@ -9740,6 +9751,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &805660860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10126,7 +10138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &817065271
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10200,6 +10212,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 1374868506}
+  allowMoving: 1
 --- !u!58 &817065273
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10343,6 +10356,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 1649662226}
+  allowMoving: 1
 --- !u!58 &825360301
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10687,6 +10701,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &861095613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11164,6 +11179,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &866511940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12179,6 +12195,7 @@ MonoBehaviour:
   - speakerName: ...
     message: "\u043D\u0430\u0441\u0442\u0443\u043F\u0430\u0435\u0442 \u0442\u0435\u043C\u043D\u043E\u0442\u0430...\""
   bookObject: {fileID: 1438675061}
+  TeleportEntrance: {fileID: 0}
   pressHint: {fileID: 1846369969}
   interactKey: 101
 --- !u!212 &915848600
@@ -13062,6 +13079,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2123867549}
+  allowMoving: 1
 --- !u!61 &989465065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14156,6 +14174,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &1124636177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17445,6 +17464,7 @@ MonoBehaviour:
   destination: {fileID: 1982556746}
   targetCam: {fileID: 1641505847}
   currentCam: {fileID: 1046075659}
+  AllowMoving: 1
 --- !u!70 &1197583954
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -17564,7 +17584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7746843f764b554d9bd82013e56be9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 324297538}
 --- !u!1 &1218690752
 GameObject:
   m_ObjectHideFlags: 0
@@ -17867,6 +17886,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &1279528679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18586,6 +18606,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &1369616782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21448,6 +21469,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &1397107388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38649,6 +38671,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!61 &1560569805
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46169,6 +46192,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 724248369}
+  allowMoving: 1
 --- !u!60 &1803446002
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -47869,6 +47893,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: Key
   targetVCam: {fileID: 895593352}
+  allowMoving: 1
 --- !u!50 &1956283115
 Rigidbody2D:
   serializedVersion: 5
@@ -48376,6 +48401,7 @@ MonoBehaviour:
   isConditional: 1
   requiredKeyName: Key
   targetVCam: {fileID: 1791374630}
+  allowMoving: 1
 --- !u!1 &2001828254
 GameObject:
   m_ObjectHideFlags: 0
@@ -49190,6 +49216,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &2046287593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49876,6 +49903,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 1046075659}
+  allowMoving: 1
 --- !u!58 &2119334445
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -50102,6 +50130,7 @@ MonoBehaviour:
   destination: {fileID: 2071341482}
   targetCam: {fileID: 914385225}
   currentCam: {fileID: 1649662226}
+  AllowMoving: 1
 --- !u!70 &2131455828
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -50264,6 +50293,7 @@ MonoBehaviour:
   isConditional: 0
   requiredKeyName: 
   targetVCam: {fileID: 2028689492}
+  allowMoving: 1
 --- !u!114 &2145820958
 MonoBehaviour:
   m_ObjectHideFlags: 0
